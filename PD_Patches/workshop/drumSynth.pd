@@ -1,0 +1,884 @@
+#N canvas 6 23 820 601 10;
+#X obj 16 285 f;
+#X floatatom 127 1 5 0 0 0 - - -;
+#X floatatom 16 355 5 0 0 0 - - -;
+#N canvas 1621 384 518 312 BassDrum 0;
+#X obj 63 20 inlet;
+#X obj 168 19 inlet;
+#X obj 262 19 inlet;
+#X text 18 2 trigger input;
+#X text 149 3 decay time;
+#X text 260 2 tune;
+#X obj 35 165 line~;
+#X obj 63 79 delay 10;
+#X msg 54 132 0 \$1;
+#X obj 35 215 *~;
+#X obj 262 176 osc~ 50;
+#X obj 35 262 outlet~;
+#X obj 81 105 int 10;
+#X obj 316 129 line~;
+#X obj 382 55 delay 10;
+#X msg 364 103 0 \$1;
+#X msg 316 77 1 0.05;
+#X obj 307 19 inlet;
+#X obj 284 152 *~ 0;
+#X obj 382 80 int 1000;
+#X text 305 0 pitch ramp amount;
+#X obj 363 19 inlet;
+#X text 409 24 speed;
+#X msg 5 55 1 0.05;
+#X obj 262 124 sig~;
+#X connect 0 0 23 0;
+#X connect 0 0 7 0;
+#X connect 0 0 16 0;
+#X connect 0 0 14 0;
+#X connect 1 0 12 1;
+#X connect 2 0 24 0;
+#X connect 6 0 9 0;
+#X connect 7 0 12 0;
+#X connect 8 0 6 0;
+#X connect 9 0 11 0;
+#X connect 10 0 9 1;
+#X connect 12 0 8 0;
+#X connect 13 0 18 0;
+#X connect 14 0 19 0;
+#X connect 15 0 13 0;
+#X connect 16 0 13 0;
+#X connect 17 0 18 1;
+#X connect 18 0 10 0;
+#X connect 19 0 15 0;
+#X connect 21 0 19 1;
+#X connect 23 0 6 0;
+#X connect 24 0 10 0;
+#X restore 132 409 pd BassDrum;
+#X obj 305 545 dac~;
+#X obj 132 383 bng 15 250 50 0 empty empty empty 0 -6 32 8 -262144
+-1 -1;
+#X floatatom 164 334 5 0 0 0 - - -;
+#X floatatom 190 358 5 0 0 0 - - -;
+#X floatatom 203 376 5 0 0 0 - - -;
+#N canvas 139 287 857 351 memory 0;
+#N canvas 0 20 450 300 graph1 0;
+#X array bassdrumSeq 16 float 1;
+#A 0 1 0 0 0 1 0 0 0 1 0 0 0 0 1 1 0;
+#X array snaredrumSeq 100 float 1;
+#A 0 0 0 1 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0;
+#X array openSeq 16 float 1;
+#A 0 1 1 0 0 1 1 0 0 1 1 0 0 1 1 0 0;
+#X array closeSeq 16 float 1;
+#A 0 0 0 1 0 0 0 1 0 0 0 1 0 0 0 1 0;
+#X coords 0 1 15 0 200 50 1;
+#X restore 221 124 graph;
+#X obj 28 142 inlet;
+#X text 29 114 step;
+#X obj 28 263 outlet;
+#X text 22 278 Bassdrum;
+#X obj 28 193 tabread bassdrumSeq;
+#X obj 28 221 select 1;
+#X obj 96 28 inlet;
+#X text 86 11 setBassDrum;
+#X msg 96 83 \; bassdrumSeq \$1 \$2;
+#X obj 224 28 inlet;
+#X text 214 11 setSnareDrum;
+#X msg 224 83 \; snaredrumSeq \$1 \$2;
+#X obj 165 221 select 1;
+#X obj 165 193 tabread snaredrumSeq;
+#X obj 165 262 outlet;
+#X text 157 278 Snaredrum;
+#X obj 463 119 loadbang;
+#X msg 463 144 \; snaredrumSeq 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \;
+bassdrumSeq 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \;;
+#X text 543 114 initialise the patterns;
+#X obj 363 28 inlet;
+#X text 354 10 setOpenHH;
+#X obj 311 221 select 1;
+#X obj 311 262 outlet;
+#X obj 311 193 tabread openSeq;
+#X text 303 278 OpenHiHat;
+#X msg 363 83 \; openSeq \$1 \$2;
+#X obj 424 221 select 1;
+#X obj 424 262 outlet;
+#X text 416 278 ClosedHiHat;
+#X obj 464 28 inlet;
+#X text 455 10 setOpenHH;
+#X msg 464 83 \; closeSeq \$1 \$2;
+#X obj 424 193 tabread closeSeq;
+#X connect 1 0 5 0;
+#X connect 1 0 14 0;
+#X connect 1 0 24 0;
+#X connect 1 0 33 0;
+#X connect 5 0 6 0;
+#X connect 6 0 3 0;
+#X connect 7 0 9 0;
+#X connect 10 0 12 0;
+#X connect 13 0 15 0;
+#X connect 14 0 13 0;
+#X connect 17 0 18 0;
+#X connect 20 0 26 0;
+#X connect 22 0 23 0;
+#X connect 24 0 22 0;
+#X connect 27 0 28 0;
+#X connect 30 0 32 0;
+#X connect 33 0 27 0;
+#X restore 34 313 pd memory;
+#X obj 23 22 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 1 1
+;
+#X obj 39 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 55 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 71 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 87 22 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 1 1
+;
+#X obj 103 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 119 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 135 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 151 21 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 1
+1;
+#X obj 167 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 183 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 199 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 215 21 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 231 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 1
+1;
+#X obj 247 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 1
+1;
+#X obj 263 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X floatatom 217 393 5 0 0 0 - - -;
+#N canvas 100 320 851 314 bassDrumSet 0;
+#X msg 8 57 0 \$1;
+#X msg 47 57 1 \$1;
+#X obj 8 24 inlet;
+#X obj 47 24 inlet;
+#X obj 320 138 outlet;
+#X obj 86 24 inlet;
+#X obj 125 24 inlet;
+#X obj 164 24 inlet;
+#X obj 203 24 inlet;
+#X obj 242 24 inlet;
+#X obj 281 24 inlet;
+#X obj 320 24 inlet;
+#X obj 359 24 inlet;
+#X obj 398 24 inlet;
+#X obj 437 24 inlet;
+#X obj 476 24 inlet;
+#X obj 515 24 inlet;
+#X obj 554 24 inlet;
+#X obj 593 24 inlet;
+#X text 164 196 this subpatch converts the input from the toggles to
+a message saying 'number of note' and 'on/off';
+#X msg 86 57 2 \$1;
+#X msg 125 57 3 \$1;
+#X msg 164 57 4 \$1;
+#X msg 203 57 5 \$1;
+#X msg 242 57 6 \$1;
+#X msg 281 57 7 \$1;
+#X msg 320 57 8 \$1;
+#X msg 359 57 9 \$1;
+#X msg 398 57 10 \$1;
+#X msg 437 57 11 \$1;
+#X msg 476 57 12 \$1;
+#X msg 515 57 13 \$1;
+#X msg 554 57 14 \$1;
+#X msg 593 57 15 \$1;
+#X connect 0 0 4 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
+#X connect 5 0 20 0;
+#X connect 6 0 21 0;
+#X connect 7 0 22 0;
+#X connect 8 0 23 0;
+#X connect 9 0 24 0;
+#X connect 10 0 25 0;
+#X connect 11 0 26 0;
+#X connect 12 0 27 0;
+#X connect 13 0 28 0;
+#X connect 14 0 29 0;
+#X connect 15 0 30 0;
+#X connect 16 0 31 0;
+#X connect 17 0 32 0;
+#X connect 18 0 33 0;
+#X connect 20 0 4 0;
+#X connect 21 0 4 0;
+#X connect 22 0 4 0;
+#X connect 23 0 4 0;
+#X connect 24 0 4 0;
+#X connect 25 0 4 0;
+#X connect 26 0 4 0;
+#X connect 27 0 4 0;
+#X connect 28 0 4 0;
+#X connect 29 0 4 0;
+#X connect 30 0 4 0;
+#X connect 31 0 4 0;
+#X connect 32 0 4 0;
+#X connect 33 0 4 0;
+#X restore 63 43 pd bassDrumSet;
+#X obj 23 59 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 39 62 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 55 62 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 1 1
+;
+#X obj 71 62 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 87 60 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 103 62 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 119 62 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 135 62 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 151 59 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 1
+1;
+#X obj 167 62 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 183 62 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 199 62 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 215 59 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 1
+1;
+#X obj 231 62 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 247 62 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 263 62 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#N canvas 100 320 859 322 snareDrumSet 0;
+#X msg 8 57 0 \$1;
+#X msg 47 57 1 \$1;
+#X obj 8 24 inlet;
+#X obj 47 24 inlet;
+#X obj 320 138 outlet;
+#X obj 86 24 inlet;
+#X obj 125 24 inlet;
+#X obj 164 24 inlet;
+#X obj 203 24 inlet;
+#X obj 242 24 inlet;
+#X obj 281 24 inlet;
+#X obj 320 24 inlet;
+#X obj 359 24 inlet;
+#X obj 398 24 inlet;
+#X obj 437 24 inlet;
+#X obj 476 24 inlet;
+#X obj 515 24 inlet;
+#X obj 554 24 inlet;
+#X obj 593 24 inlet;
+#X text 164 196 this subpatch converts the input from the toggles to
+a message saying 'number of note' and 'on/off';
+#X msg 86 57 2 \$1;
+#X msg 125 57 3 \$1;
+#X msg 164 57 4 \$1;
+#X msg 203 57 5 \$1;
+#X msg 242 57 6 \$1;
+#X msg 281 57 7 \$1;
+#X msg 320 57 8 \$1;
+#X msg 359 57 9 \$1;
+#X msg 398 57 10 \$1;
+#X msg 437 57 11 \$1;
+#X msg 476 57 12 \$1;
+#X msg 515 57 13 \$1;
+#X msg 554 57 14 \$1;
+#X msg 593 57 15 \$1;
+#X connect 0 0 4 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
+#X connect 5 0 20 0;
+#X connect 6 0 21 0;
+#X connect 7 0 22 0;
+#X connect 8 0 23 0;
+#X connect 9 0 24 0;
+#X connect 10 0 25 0;
+#X connect 11 0 26 0;
+#X connect 12 0 27 0;
+#X connect 13 0 28 0;
+#X connect 14 0 29 0;
+#X connect 15 0 30 0;
+#X connect 16 0 31 0;
+#X connect 17 0 32 0;
+#X connect 18 0 33 0;
+#X connect 20 0 4 0;
+#X connect 21 0 4 0;
+#X connect 22 0 4 0;
+#X connect 23 0 4 0;
+#X connect 24 0 4 0;
+#X connect 25 0 4 0;
+#X connect 26 0 4 0;
+#X connect 27 0 4 0;
+#X connect 28 0 4 0;
+#X connect 29 0 4 0;
+#X connect 30 0 4 0;
+#X connect 31 0 4 0;
+#X connect 32 0 4 0;
+#X connect 33 0 4 0;
+#X restore 92 80 pd snareDrumSet;
+#X floatatom 408 373 5 0 0 0 - - -;
+#X floatatom 409 392 5 0 0 0 - - -;
+#X floatatom 409 411 5 0 0 0 - - -;
+#N canvas 1173 370 522 316 SnareDrum 0;
+#X obj 63 20 inlet;
+#X obj 118 19 inlet;
+#X obj 309 18 inlet;
+#X text 18 2 trigger input;
+#X text 119 3 decay time;
+#X text 307 1 tune;
+#X obj 35 165 line~;
+#X obj 63 79 delay 10;
+#X msg 54 132 0 \$1;
+#X obj 35 215 *~;
+#X obj 309 175 osc~ 50;
+#X obj 35 262 outlet~;
+#X obj 81 105 int 10;
+#X obj 363 128 line~;
+#X obj 429 54 delay 10;
+#X msg 411 102 0 \$1;
+#X msg 363 76 1 0.05;
+#X obj 354 18 inlet;
+#X obj 331 151 *~ 0;
+#X obj 429 79 int 1000;
+#X text 352 -1 pitch ramp amount;
+#X obj 410 18 inlet;
+#X text 456 23 speed;
+#X msg 5 55 1 0.05;
+#X obj 309 123 sig~;
+#X obj 145 86 noise~;
+#X obj 265 18 inlet;
+#X obj 215 19 inlet;
+#X obj 145 133 bp~;
+#X obj 166 19 inlet;
+#X obj 145 157 *~;
+#X connect 0 0 23 0;
+#X connect 0 0 7 0;
+#X connect 0 0 16 0;
+#X connect 0 0 14 0;
+#X connect 1 0 12 1;
+#X connect 2 0 24 0;
+#X connect 6 0 9 0;
+#X connect 7 0 12 0;
+#X connect 8 0 6 0;
+#X connect 9 0 11 0;
+#X connect 10 0 9 1;
+#X connect 12 0 8 0;
+#X connect 13 0 18 0;
+#X connect 14 0 19 0;
+#X connect 15 0 13 0;
+#X connect 16 0 13 0;
+#X connect 17 0 18 1;
+#X connect 18 0 10 0;
+#X connect 19 0 15 0;
+#X connect 21 0 19 1;
+#X connect 23 0 6 0;
+#X connect 24 0 10 0;
+#X connect 25 0 28 0;
+#X connect 26 0 28 2;
+#X connect 27 0 28 1;
+#X connect 28 0 30 0;
+#X connect 29 0 30 1;
+#X connect 30 0 9 1;
+#X restore 287 409 pd SnareDrum;
+#X obj 282 387 bng 15 250 50 0 empty empty empty 0 -6 32 8 -262144
+-1 -1;
+#X floatatom 353 335 5 0 0 0 - - -;
+#X floatatom 366 359 5 0 0 0 - - -;
+#X obj 352 191 vsl 8 128 0.01 43700 1 0 empty empty empty 0 -8 32 8
+-195568 -1 -1 8300 1;
+#X obj 366 191 vsl 8 128 0.01 43700 1 0 empty empty empty 0 -8 32 8
+-195568 -1 -1 1600 1;
+#X obj 331 191 vsl 8 128 0.01 43700 1 0 empty empty empty 0 -8 32 8
+-195568 -1 -1 4600 1;
+#X obj 400 190 vsl 8 128 40 43700 1 0 empty empty empty 0 -8 32 8 -195568
+-1 -1 1600 1;
+#X text 307 311 Vol;
+#X text 333 325 CutOff;
+#X text 348 371 Resonanz;
+#X obj 296 191 vsl 8 128 10 500 1 0 empty empty empty 0 -8 32 8 -195568
+-1 -1 11500 1;
+#X text 273 172 Decay;
+#X text 327 172 [Noise];
+#X obj 413 190 vsl 8 128 40 43700 1 0 empty empty empty 0 -8 32 8 -195568
+-1 -1 4000 1;
+#X obj 427 190 vsl 8 128 40 43700 1 0 empty empty empty 0 -8 32 8 -195568
+-1 -1 800 1;
+#X text 394 171 [Punch];
+#X obj 190 190 vsl 8 128 1 500 1 0 empty empty empty 0 -8 32 8 -195568
+-1 -1 5400 1;
+#X obj 203 190 vsl 8 128 0 500 0 0 empty empty empty 0 -8 32 8 -195568
+-1 -1 5600 1;
+#X obj 217 190 vsl 8 128 0.01 500 0 0 empty empty empty 0 -8 32 8 -195568
+-1 -1 2800 1;
+#X obj 164 190 vsl 8 128 10 500 1 0 empty empty empty 0 -8 32 8 -195568
+-1 -1 9200 1;
+#X text 141 171 Decay;
+#X text 184 171 [Punch];
+#X text 135 569 B A S S D R U M;
+#X text 320 568 S N A R E D R U M;
+#X obj 469 387 bng 15 250 50 0 empty empty empty 0 -6 32 8 -262144
+-1 -1;
+#N canvas 1173 370 534 328 HiHat 0;
+#X obj 63 20 inlet;
+#X obj 118 19 inlet;
+#X obj 309 18 inlet;
+#X text 18 2 trigger input;
+#X text 307 1 tune;
+#X obj 35 165 line~;
+#X obj 63 79 delay 10;
+#X msg 54 132 0 \$1;
+#X obj 35 215 *~;
+#X obj 352 45 osc~ 50;
+#X obj 35 262 outlet~;
+#X obj 81 105 int 10;
+#X msg 5 55 1 0.05;
+#X obj 265 18 inlet;
+#X obj 215 19 inlet;
+#X obj 166 19 inlet;
+#X floatatom 305 109 5 0 0 0 - - -;
+#X floatatom 388 112 5 0 0 0 - - -;
+#X obj 209 142 osc~ 100;
+#X obj 211 106 +~;
+#X floatatom 209 72 5 0 0 0 - - -;
+#X obj 207 165 /~ 1;
+#X obj 252 72 *~ 111115;
+#X obj 207 185 hip~;
+#X obj 207 208 hip~;
+#X obj 243 185 hip~;
+#X obj 243 208 hip~;
+#X text 119 3 decay decay2;
+#X obj 135 81 delay 10;
+#X msg 126 134 0 \$1;
+#X obj 153 107 int 10;
+#X text 302 282 this is a HiHat made with FM;
+#X connect 0 0 12 0;
+#X connect 0 0 6 0;
+#X connect 1 0 11 1;
+#X connect 2 0 9 0;
+#X connect 2 0 17 0;
+#X connect 5 0 8 0;
+#X connect 6 0 11 0;
+#X connect 7 0 5 0;
+#X connect 8 0 10 0;
+#X connect 9 0 22 0;
+#X connect 11 0 7 0;
+#X connect 12 0 5 0;
+#X connect 13 0 12 0;
+#X connect 13 0 28 0;
+#X connect 14 0 16 0;
+#X connect 14 0 23 1;
+#X connect 14 0 24 1;
+#X connect 14 0 26 1;
+#X connect 14 0 25 1;
+#X connect 15 0 30 1;
+#X connect 18 0 21 0;
+#X connect 19 0 18 0;
+#X connect 20 0 19 0;
+#X connect 21 0 23 0;
+#X connect 22 0 19 1;
+#X connect 23 0 24 0;
+#X connect 24 0 25 0;
+#X connect 25 0 26 0;
+#X connect 26 0 8 1;
+#X connect 28 0 30 0;
+#X connect 29 0 5 0;
+#X connect 30 0 29 0;
+#X restore 476 410 pd HiHat;
+#X obj 493 190 vsl 8 128 10 500 1 0 empty empty empty 0 -8 32 8 -195568
+-1 -1 11300 1;
+#X obj 482 190 vsl 8 128 10 500 1 0 empty empty empty 0 -8 32 8 -195568
+-1 -1 2500 1;
+#X floatatom 509 334 5 0 0 0 - - -;
+#X obj 509 190 vsl 8 128 0.01 43700 1 0 empty empty empty 0 -8 32 8
+-195568 -1 -1 7700 1;
+#X text 510 319 CutOff;
+#X obj 557 189 vsl 8 128 0.01 43700 1 0 empty empty empty 0 -8 32 8
+-195568 -1 -1 9600 1;
+#X obj 23 94 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 39 97 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 55 97 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 71 97 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 87 95 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 103 97 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 119 97 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 135 97 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 151 94 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 167 97 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 183 97 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 199 97 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 215 94 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 231 97 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 247 97 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 263 97 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#N canvas 100 320 859 322 openHHSet 0;
+#X msg 8 57 0 \$1;
+#X msg 47 57 1 \$1;
+#X obj 8 24 inlet;
+#X obj 47 24 inlet;
+#X obj 320 138 outlet;
+#X obj 86 24 inlet;
+#X obj 125 24 inlet;
+#X obj 164 24 inlet;
+#X obj 203 24 inlet;
+#X obj 242 24 inlet;
+#X obj 281 24 inlet;
+#X obj 320 24 inlet;
+#X obj 359 24 inlet;
+#X obj 398 24 inlet;
+#X obj 437 24 inlet;
+#X obj 476 24 inlet;
+#X obj 515 24 inlet;
+#X obj 554 24 inlet;
+#X obj 593 24 inlet;
+#X text 164 196 this subpatch converts the input from the toggles to
+a message saying 'number of note' and 'on/off';
+#X msg 86 57 2 \$1;
+#X msg 125 57 3 \$1;
+#X msg 164 57 4 \$1;
+#X msg 203 57 5 \$1;
+#X msg 242 57 6 \$1;
+#X msg 281 57 7 \$1;
+#X msg 320 57 8 \$1;
+#X msg 359 57 9 \$1;
+#X msg 398 57 10 \$1;
+#X msg 437 57 11 \$1;
+#X msg 476 57 12 \$1;
+#X msg 515 57 13 \$1;
+#X msg 554 57 14 \$1;
+#X msg 593 57 15 \$1;
+#X connect 0 0 4 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
+#X connect 5 0 20 0;
+#X connect 6 0 21 0;
+#X connect 7 0 22 0;
+#X connect 8 0 23 0;
+#X connect 9 0 24 0;
+#X connect 10 0 25 0;
+#X connect 11 0 26 0;
+#X connect 12 0 27 0;
+#X connect 13 0 28 0;
+#X connect 14 0 29 0;
+#X connect 15 0 30 0;
+#X connect 16 0 31 0;
+#X connect 17 0 32 0;
+#X connect 18 0 33 0;
+#X connect 20 0 4 0;
+#X connect 21 0 4 0;
+#X connect 22 0 4 0;
+#X connect 23 0 4 0;
+#X connect 24 0 4 0;
+#X connect 25 0 4 0;
+#X connect 26 0 4 0;
+#X connect 27 0 4 0;
+#X connect 28 0 4 0;
+#X connect 29 0 4 0;
+#X connect 30 0 4 0;
+#X connect 31 0 4 0;
+#X connect 32 0 4 0;
+#X connect 33 0 4 0;
+#X restore 92 115 pd openHHSet;
+#X obj 515 387 bng 15 250 50 0 empty empty empty 0 -6 32 8 -262144
+-1 -1;
+#X obj 22 129 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 38 132 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 54 132 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 70 132 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 86 130 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 102 132 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 118 132 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 134 132 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 150 129 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 166 132 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 182 132 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 198 132 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 214 129 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 230 132 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 246 132 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 262 132 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#N canvas 100 320 867 330 closedHHSet 0;
+#X msg 8 57 0 \$1;
+#X msg 47 57 1 \$1;
+#X obj 8 24 inlet;
+#X obj 47 24 inlet;
+#X obj 320 138 outlet;
+#X obj 86 24 inlet;
+#X obj 125 24 inlet;
+#X obj 164 24 inlet;
+#X obj 203 24 inlet;
+#X obj 242 24 inlet;
+#X obj 281 24 inlet;
+#X obj 320 24 inlet;
+#X obj 359 24 inlet;
+#X obj 398 24 inlet;
+#X obj 437 24 inlet;
+#X obj 476 24 inlet;
+#X obj 515 24 inlet;
+#X obj 554 24 inlet;
+#X obj 593 24 inlet;
+#X text 164 196 this subpatch converts the input from the toggles to
+a message saying 'number of note' and 'on/off';
+#X msg 86 57 2 \$1;
+#X msg 125 57 3 \$1;
+#X msg 164 57 4 \$1;
+#X msg 203 57 5 \$1;
+#X msg 242 57 6 \$1;
+#X msg 281 57 7 \$1;
+#X msg 320 57 8 \$1;
+#X msg 359 57 9 \$1;
+#X msg 398 57 10 \$1;
+#X msg 437 57 11 \$1;
+#X msg 476 57 12 \$1;
+#X msg 515 57 13 \$1;
+#X msg 554 57 14 \$1;
+#X msg 593 57 15 \$1;
+#X connect 0 0 4 0;
+#X connect 1 0 4 0;
+#X connect 2 0 0 0;
+#X connect 3 0 1 0;
+#X connect 5 0 20 0;
+#X connect 6 0 21 0;
+#X connect 7 0 22 0;
+#X connect 8 0 23 0;
+#X connect 9 0 24 0;
+#X connect 10 0 25 0;
+#X connect 11 0 26 0;
+#X connect 12 0 27 0;
+#X connect 13 0 28 0;
+#X connect 14 0 29 0;
+#X connect 15 0 30 0;
+#X connect 16 0 31 0;
+#X connect 17 0 32 0;
+#X connect 18 0 33 0;
+#X connect 20 0 4 0;
+#X connect 21 0 4 0;
+#X connect 22 0 4 0;
+#X connect 23 0 4 0;
+#X connect 24 0 4 0;
+#X connect 25 0 4 0;
+#X connect 26 0 4 0;
+#X connect 27 0 4 0;
+#X connect 28 0 4 0;
+#X connect 29 0 4 0;
+#X connect 30 0 4 0;
+#X connect 31 0 4 0;
+#X connect 32 0 4 0;
+#X connect 33 0 4 0;
+#X restore 98 151 pd closedHHSet;
+#X obj 16 1 netreceive 3000;
+#X text 477 567 Close/Open HiHat;
+#X obj 132 520 AccessLib/output~;
+#X obj 287 519 AccessLib/output~;
+#X obj 476 517 AccessLib/output~;
+#X obj 552 490 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 363 492 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 208 491 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 170 434 vsl 8 64 0 127 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 5300 1;
+#X obj 205 459 hsl 64 8 0 127 0 0 empty empty empty -2 -6 32 8 -262144
+-1 -1 2900 1;
+#X text 217 441 pan;
+#X text 145 490 vol;
+#X text 212 505 mute;
+#X obj 325 435 vsl 8 64 0 127 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 3800 1;
+#X obj 360 460 hsl 64 8 0 127 0 0 empty empty empty -2 -6 32 8 -262144
+-1 -1 700 1;
+#X text 372 442 pan;
+#X text 300 491 vol;
+#X text 367 506 mute;
+#X obj 514 434 vsl 8 64 0 127 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 4300 1;
+#X obj 550 459 hsl 64 8 0 127 0 0 empty empty empty -2 -6 32 8 -262144
+-1 -1 3000 1;
+#X text 562 441 pan;
+#X text 490 490 vol;
+#X text 557 505 mute;
+#X text 566 234 Frequence;
+#X text 32 386 manual trigger;
+#X text 409 91 so \, you say this doesn't sound like drums? actualy
+the vendor ROLAND thought simular with their TR808 \, but this drumbox
+changed the whole dance music!;
+#X text 179 1 <- sould show 1 if connected;
+#X text 294 30 <-- this is the play matrix \, click your drum pattern.
+It might keep pattern stored between sessions but the knobs look always
+off toggled when this patch is loaded. Room for improvements!;
+#X text 388 4 a drumsynthesizer by Malte Steiner \, Access Space Sheffield
+\, UK;
+#X text 461 161 Decay open/ close;
+#X text 187 318 tune;
+#X text 201 327 EG amount;
+#X text 226 310 EG Decay;
+#X text 398 318 tune;
+#X text 412 327 EG amount;
+#X text 437 310 Decay;
+#X connect 0 0 2 0;
+#X connect 0 0 9 0;
+#X connect 3 0 118 0;
+#X connect 5 0 3 0;
+#X connect 6 0 3 1;
+#X connect 7 0 3 2;
+#X connect 8 0 3 3;
+#X connect 9 0 5 0;
+#X connect 9 1 49 0;
+#X connect 9 2 73 0;
+#X connect 9 3 98 0;
+#X connect 10 0 27 0;
+#X connect 11 0 27 1;
+#X connect 12 0 27 2;
+#X connect 13 0 27 3;
+#X connect 14 0 27 4;
+#X connect 15 0 27 5;
+#X connect 16 0 27 6;
+#X connect 17 0 27 7;
+#X connect 18 0 27 8;
+#X connect 19 0 27 9;
+#X connect 20 0 27 10;
+#X connect 21 0 27 11;
+#X connect 22 0 27 12;
+#X connect 23 0 27 13;
+#X connect 24 0 27 14;
+#X connect 25 0 27 15;
+#X connect 26 0 3 4;
+#X connect 27 0 9 1;
+#X connect 28 0 44 0;
+#X connect 29 0 44 1;
+#X connect 30 0 44 2;
+#X connect 31 0 44 3;
+#X connect 32 0 44 4;
+#X connect 33 0 44 5;
+#X connect 34 0 44 6;
+#X connect 35 0 44 7;
+#X connect 36 0 44 8;
+#X connect 37 0 44 9;
+#X connect 38 0 44 10;
+#X connect 39 0 44 11;
+#X connect 40 0 44 12;
+#X connect 41 0 44 13;
+#X connect 42 0 44 14;
+#X connect 43 0 44 15;
+#X connect 44 0 9 2;
+#X connect 45 0 48 5;
+#X connect 46 0 48 6;
+#X connect 47 0 48 7;
+#X connect 48 0 119 0;
+#X connect 49 0 48 0;
+#X connect 50 0 48 3;
+#X connect 51 0 48 4;
+#X connect 52 0 50 0;
+#X connect 53 0 51 0;
+#X connect 54 0 48 2;
+#X connect 55 0 45 0;
+#X connect 59 0 48 1;
+#X connect 62 0 46 0;
+#X connect 63 0 47 0;
+#X connect 65 0 7 0;
+#X connect 66 0 8 0;
+#X connect 67 0 26 0;
+#X connect 68 0 6 0;
+#X connect 73 0 74 0;
+#X connect 74 0 120 0;
+#X connect 75 0 74 2;
+#X connect 76 0 74 1;
+#X connect 77 0 74 3;
+#X connect 78 0 77 0;
+#X connect 80 0 74 5;
+#X connect 81 0 97 0;
+#X connect 82 0 97 1;
+#X connect 83 0 97 2;
+#X connect 84 0 97 3;
+#X connect 85 0 97 4;
+#X connect 86 0 97 5;
+#X connect 87 0 97 6;
+#X connect 88 0 97 7;
+#X connect 89 0 97 8;
+#X connect 90 0 97 9;
+#X connect 91 0 97 10;
+#X connect 92 0 97 11;
+#X connect 93 0 97 12;
+#X connect 94 0 97 13;
+#X connect 95 0 97 14;
+#X connect 96 0 97 15;
+#X connect 97 0 9 3;
+#X connect 98 0 74 4;
+#X connect 99 0 115 0;
+#X connect 100 0 115 1;
+#X connect 101 0 115 2;
+#X connect 102 0 115 3;
+#X connect 103 0 115 4;
+#X connect 104 0 115 5;
+#X connect 105 0 115 6;
+#X connect 106 0 115 7;
+#X connect 107 0 115 8;
+#X connect 108 0 115 9;
+#X connect 109 0 115 10;
+#X connect 110 0 115 11;
+#X connect 111 0 115 12;
+#X connect 112 0 115 13;
+#X connect 113 0 115 14;
+#X connect 114 0 115 15;
+#X connect 115 0 9 4;
+#X connect 116 0 0 0;
+#X connect 116 1 1 0;
+#X connect 118 0 4 0;
+#X connect 118 1 4 1;
+#X connect 119 0 4 0;
+#X connect 119 1 4 1;
+#X connect 120 0 4 0;
+#X connect 120 1 4 1;
+#X connect 121 0 120 2;
+#X connect 122 0 119 2;
+#X connect 123 0 118 2;
+#X connect 124 0 118 1;
+#X connect 125 0 118 3;
+#X connect 129 0 119 1;
+#X connect 130 0 119 3;
+#X connect 134 0 120 1;
+#X connect 135 0 120 3;

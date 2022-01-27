@@ -1,0 +1,34 @@
+#N canvas 3 54 1425 818 10;
+#X obj 195 23 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 220 24 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 162 65 1;
+#X msg 195 65 0;
+#X msg 222 64 0;
+#X msg 246 65 1;
+#X obj 74 218 outlet~;
+#X obj 195 -33 inlet;
+#X obj 75 -33 inlet~;
+#X obj 138 -33 inlet~;
+#X obj 139 144 pot~;
+#X text 201 134 2019_02_24_12_42 replaced the pd pot~ subpatches \;
+with abstractions to see if it will resolve the \; stackoverflow errors
+;
+#X obj 75 138 pot~;
+#X obj 195 -4 route 0 1;
+#X connect 0 0 2 0;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 1 0 5 0;
+#X connect 2 0 12 1;
+#X connect 3 0 10 1;
+#X connect 4 0 12 1;
+#X connect 5 0 10 1;
+#X connect 7 0 13 0;
+#X connect 8 0 12 0;
+#X connect 9 0 10 0;
+#X connect 10 0 6 0;
+#X connect 12 0 6 0;
+#X connect 13 0 0 0;
+#X connect 13 1 1 0;

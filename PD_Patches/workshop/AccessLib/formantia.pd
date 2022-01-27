@@ -1,0 +1,147 @@
+#N canvas 4 20 851 649 10;
+#X obj 12 289 osc~;
+#X obj 97 289 osc~;
+#X obj 196 289 osc~;
+#X obj 312 285 osc~;
+#X text 100 268 the 5 oscillators creating the formant;
+#X obj 392 285 osc~;
+#X obj 81 611 outlet~;
+#X obj 81 575 /~ 5;
+#N canvas 0 0 450 300 graph3 0;
+#X array ffrequency1 5 float 1;
+#A 0 600 400 250 400 350;
+#X array ffrequency2 100 float 1;
+#A 0 1040 1620 1750 750 600 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0;
+#X array ffrequency3 100 float 1;
+#A 0 2250 2400 2600 2400 2400 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0;
+#X array ffrequency4 100 float 1;
+#A 0 2450 2800 3050 2600 2675 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0;
+#X array ffrequency5 100 float 1;
+#A 0 2750 3100 3340 2900 2950 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0;
+#X coords 0 3500 4 0 200 140 1;
+#X restore 577 193 graph;
+#X msg 577 11 \; ffrequency1 0 600 400 250 400 350;
+#X msg 577 44 \; ffrequency2 0 1040 1620 1750 750 600;
+#X msg 577 77 \; ffrequency3 0 2250 2400 2600 2400 2400;
+#X msg 577 110 \; ffrequency4 0 2450 2800 3050 2600 2675;
+#X msg 577 143 \; ffrequency5 0 2750 3100 3340 2900 2950;
+#X obj 514 11 loadbang;
+#N canvas 0 0 450 300 graph4 0;
+#X array famp1 5 float 1;
+#A 0 0 0 0 0 0;
+#X array famp2 5 float 1;
+#A 0 -7 -12 -30 -11 -20;
+#X array famp3 5 float 1;
+#A 0 -9 -9 -16 -21 -32;
+#X array famp4 5 float 1;
+#A 0 -9 -12 -22 -20 -28;
+#X array famp5 5 float 1;
+#A 0 -20 -18 -28 -40 -36;
+#X coords 0 0 4 -64 200 140 1;
+#X restore 577 341 graph;
+#X msg 377 11 \; famp1 0 0 0 0 0 0;
+#X msg 377 44 \; famp2 0 -7 -12 -30 -11 -20;
+#X msg 377 77 \; famp3 0 -9 -9 -16 -21 -32;
+#X msg 377 110 \; famp4 0 -9 -12 -22 -20 -28;
+#X msg 377 143 \; famp5 0 -20 -18 -28 -40 -36;
+#X obj 12 541 *~;
+#X obj 12 44 inlet;
+#X obj 139 44 inlet;
+#X text 137 74 Formant Morph Position;
+#X text 10 74 Frequency Offset;
+#X text 255 11 load the data into the tables (could also be done with
+a file);
+#X obj 28 123 tabread4 ffrequency1;
+#X obj 138 100 * 5;
+#X obj 12 200 +;
+#X msg 28 162 bang;
+#X obj 28 363 tabread4 famp1;
+#X obj 97 541 *~;
+#X obj 196 537 *~;
+#X obj 312 538 *~;
+#X obj 392 538 *~;
+#X obj 113 428 tabread4 famp2;
+#X obj 212 504 tabread4 famp3;
+#X obj 328 409 tabread4 famp4;
+#X obj 412 507 tabread4 famp5;
+#X obj 187 120 send Morph;
+#X obj 217 311 receive Morph;
+#X obj 70 220 +;
+#X msg 86 182 bang;
+#X obj 130 213 +;
+#X msg 146 188 bang;
+#X obj 86 144 tabread4 ffrequency2;
+#X obj 146 168 tabread4 ffrequency3;
+#X obj 223 241 +;
+#X msg 239 216 bang;
+#X obj 239 190 tabread4 ffrequency4;
+#X obj 373 240 +;
+#X msg 389 215 bang;
+#X obj 389 189 tabread4 ffrequency5;
+#X connect 0 0 21 0;
+#X connect 1 0 32 0;
+#X connect 2 0 33 0;
+#X connect 3 0 34 0;
+#X connect 5 0 35 0;
+#X connect 7 0 6 0;
+#X connect 14 0 9 0;
+#X connect 14 0 10 0;
+#X connect 14 0 11 0;
+#X connect 14 0 12 0;
+#X connect 14 0 13 0;
+#X connect 14 0 16 0;
+#X connect 14 0 17 0;
+#X connect 14 0 18 0;
+#X connect 14 0 19 0;
+#X connect 14 0 20 0;
+#X connect 21 0 7 0;
+#X connect 22 0 29 0;
+#X connect 23 0 28 0;
+#X connect 27 0 29 1;
+#X connect 27 0 30 0;
+#X connect 28 0 27 0;
+#X connect 28 0 40 0;
+#X connect 29 0 0 0;
+#X connect 30 0 29 0;
+#X connect 31 0 21 1;
+#X connect 32 0 7 0;
+#X connect 33 0 7 0;
+#X connect 34 0 7 0;
+#X connect 35 0 7 0;
+#X connect 36 0 32 1;
+#X connect 37 0 33 1;
+#X connect 38 0 34 1;
+#X connect 39 0 35 1;
+#X connect 41 0 31 0;
+#X connect 41 0 36 0;
+#X connect 41 0 37 0;
+#X connect 41 0 38 0;
+#X connect 41 0 39 0;
+#X connect 42 0 1 0;
+#X connect 43 0 42 0;
+#X connect 44 0 2 0;
+#X connect 45 0 44 0;
+#X connect 46 0 42 1;
+#X connect 46 0 43 0;
+#X connect 47 0 44 1;
+#X connect 47 0 45 0;
+#X connect 48 0 3 0;
+#X connect 49 0 48 0;
+#X connect 50 0 48 1;
+#X connect 50 0 49 0;
+#X connect 51 0 5 0;
+#X connect 52 0 51 0;
+#X connect 53 0 51 1;
+#X connect 53 0 52 0;

@@ -1,0 +1,276 @@
+#N canvas 102 22 982 693 10;
+#X obj 551 564 loadbang;
+#X obj 274 36 f;
+#X obj 272 114 mtof;
+#X obj 14 573 *~;
+#X obj 214 4 netreceive 3000;
+#X floatatom 325 4 5 0 0 0 - - -;
+#X obj 14 539 line~;
+#X floatatom 286 63 5 0 0 0 - - -;
+#X floatatom 329 134 5 0 0 0 - - -;
+#X obj 126 107 bng 15 250 50 0 empty empty empty 0 -6 32 8 -262144
+-1 -1;
+#X obj 274 83 tabread sequenz2;
+#N canvas 0 20 450 300 graph2 0;
+#X array sequenz2 100 float 1;
+#A 0 25 50 30 55 33.5714 60 30 57 25 63 30 65 25 70 30 50 27.8571 23.5714
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X array cutoff 16 float 1;
+#A 0 58.5712 43.5713 30 12.8573 7.14307 5.71452 3.57168 3.57168 2.8574
+2.14312 8.57163 11.4287 17.8573 29.2857 39.9999 2.85715;
+#X coords 0 100 15 0 200 140 1;
+#X restore 768 163 graph;
+#X obj 24 339 delay 2;
+#X obj 92 208 delay 2;
+#X obj 194 361 vcf~ 5;
+#X floatatom 288 351 5 0 0 0 - - -;
+#X obj 146 299 line~;
+#X msg 551 589 \; sequenz2 0 25 50 30 55 25 60 30 57 25 63 30 65 25
+70 30 50;
+#X text 363 -1 <-shows 1 if connected;
+#X obj 27 41 key;
+#X obj 27 66 select 32;
+#X text 3 19 trigger the sound with space;
+#X text 141 108 <- or click here;
+#X text 207 380 Filter section;
+#X obj 786 338 vsl 8 128 0.5 100 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 0 1;
+#X obj 799 338 vsl 8 128 0.5 500 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 7900 1;
+#X text 750 467 Attack;
+#X text 801 467 Release;
+#X obj 750 492 send AAttack;
+#X obj 750 512 send ARelease;
+#X obj 11 110 receive AAttack;
+#X obj 64 361 receive ARelease;
+#X obj 14 196 int 0.5;
+#X obj 113 172 + 1;
+#X msg 92 278 0 \$1;
+#X obj 92 257 int 1000;
+#X msg 14 220 1 \$1;
+#X msg 24 442 0 \$1;
+#X obj 51 307 + 1;
+#X obj 24 403 int 1000;
+#X obj 890 337 vsl 8 128 0.5 100 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 0 1;
+#X obj 903 337 vsl 8 128 0.5 500 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 8100 1;
+#X text 854 467 Attack;
+#X text 905 467 Release;
+#X obj 854 492 send FAttack;
+#X obj 854 512 send FRelease;
+#X obj 150 124 receive FAttack;
+#X obj 106 234 receive FRelease;
+#X obj 147 162 int 0.5;
+#X text 326 61 <-step index 0-15;
+#X obj 481 338 vsl 8 128 0 10 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 1270 1;
+#X msg 328 159 bang;
+#X obj 358 271 noise~;
+#X obj 518 338 vsl 8 128 0 1 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 6300 1;
+#X obj 546 338 vsl 8 128 0 1 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 6700 1;
+#X obj 572 338 vsl 8 128 0 1 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 0 1;
+#X obj 272 232 *~;
+#X obj 328 271 *~;
+#X obj 291 318 *~;
+#X obj 518 520 send MixNoise;
+#X obj 354 298 receive MixNoise;
+#X obj 328 179 *;
+#X floatatom 476 480 5 0 0 0 - - -;
+#X msg 481 292 1;
+#X text 438 276 press for normal tune;
+#X text 411 493 Detune Sinus;
+#X obj 643 337 vsl 8 128 1 10000 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 4100 1;
+#X obj 678 337 vsl 8 128 0.01 100 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 0 1;
+#X obj 643 481 send Cutoff;
+#X obj 148 325 *~;
+#X obj 175 267 receive Cutoff;
+#X obj 193 295 sig~;
+#X msg 147 189 1 \$1;
+#X obj 643 502 send Resonanz;
+#X obj 226 445 + 1;
+#X obj 194 467 *~;
+#X obj 274 402 receive Resonanz;
+#X obj 415 82 tabread cutoff;
+#X obj 654 233 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 627 256 *;
+#X obj 627 279 select 0;
+#X obj 243 423 * 0.5;
+#X obj 643 300 * 50;
+#X text 491 544 Oscillators;
+#X text 652 543 Filter;
+#X text 754 542 Amplitude EG;
+#X text 870 541 Filter EG;
+#X text 637 647 by Malte Steiner \, Access Space Sheffield \, UK;
+#X obj 304 428 vsl 15 128 1.27 127 0 0 empty empty empty 0 -8 32 8
+-262144 -1 -1 8500 1;
+#X obj 271 491 tgl 30 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 272 580 hsl 128 15 0 127 0 0 empty empty empty -2 -6 32 8 -262144
+-1 -1 6000 1;
+#X obj 47 632 AccessLib/output;
+#X text 270 476 MUTE;
+#X text 321 521 Main Volume;
+#X text 348 561 Pan;
+#X text 399 598 Right;
+#X text 267 596 Left;
+#X text 561 235 sequenced cut;
+#X text 900 164 sequencer;
+#N canvas 0 20 450 300 graph1 0;
+#X array Wave1 128 float 1;
+#A 0 0.916834 0.904229 0.891624 0.879019 0.866414 0.853809 0.841204
+0.828599 0.815994 0.803389 0.790784 0.778179 0.765574 0.752969 0.740364
+0.727759 0.715154 0.702549 0.692696 0.682844 0.672992 0.66314 0.653288
+0.643436 0.633583 0.623731 0.613879 0.604027 0.594175 0.584323 0.57447
+0.564618 0.554766 0.544914 0.535062 0.525209 0.515357 0.505505 0.495653
+-1.01173 -0.9784 -0.945066 -0.868876 -0.85459 -0.826019 -0.818876 -0.811733
+-0.811733 -0.811733 -0.811733 -0.811733 -0.797448 0.0945503 0.0791218
+0.0636933 0.0482647 0.0328362 0.0174076 0.0019791 -0.0134494 -0.028878
+-0.0443065 -0.0597351 -0.0751636 -0.0905921 -0.106021 -0.121449 -0.136878
+-0.152306 -0.167735 -0.183163 -0.194852 -0.20654 -0.218228 -0.229917
+-0.241605 -0.253293 -0.264981 -0.27667 -0.288358 -0.300046 -0.311735
+-0.32636 -0.340986 -0.355612 -0.370238 -0.384864 -0.399489 -0.414115
+-0.428741 -0.443367 -0.457993 -0.472618 -0.487244 -0.50187 -0.516496
+-0.531122 -0.545748 -0.560374 -0.574999 -0.589625 -0.604251 -0.618877
+-0.633503 -0.648129 -0.662754 -0.67738 -0.692006 -0.706632 -0.721258
+-0.735884 -0.75051 -0.765135 -0.779761 -0.794387 -0.809013 -0.823639
+-0.838265 -0.85289 -0.867516 -0.882142 -0.896768 -0.911394 -0.92602
+-0.831971 -0.892685 -0.953399 -0.981971;
+#X coords 0 1 127 -1 200 140 1;
+#X restore 557 9 graph;
+#N canvas 0 20 450 300 graph2 0;
+#X array Wave2 128 float 1;
+#A 0 0.883914 0.833914 0.783914 0.780342 0.776771 0.7732 0.769628 0.763746
+0.757863 0.751981 0.746099 0.740216 0.734334 0.728452 0.722569 0.716687
+0.710805 0.704922 0.69904 0.693158 0.687275 0.681393 0.675511 0.669629
+0.664073 0.658518 0.652962 0.647407 0.641851 0.636295 0.63074 0.625184
+0.619629 0.614073 0.608518 0.602962 0.597406 0.591851 0.586295 0.58074
+0.575184 0.569629 0.555343 0.541057 0.526772 0.514073 0.501375 0.488676
+0.475978 0.46328 0.450581 0.437883 0.425184 0.412486 0.394629 0.376772
+0.358915 0.341058 0.323201 0.305343 0.287486 0.269629 0.251772 0.233915
+0.216058 0.198201 0.179834 0.161466 0.143099 0.124732 0.106364 0.087997
+0.0696297 0.0512624 0.0328951 0.0145277 -0.00383956 -0.0222069 -0.0405742
+-0.0589415 -0.08037 -0.101799 -0.123227 -0.144656 -0.166084 -0.187513
+-0.208941 -0.23037 -0.251798 -0.273227 -0.294655 -0.316084 -0.344655
+-0.373227 -0.430369 -0.437512 -0.444655 -0.451798 -0.458941 -0.463702
+-0.468464 -0.473226 -0.473226 -0.473226 -0.473226 -0.473226 -0.473226
+-0.473226 -0.494655 -0.516083 -0.516083 -0.530369 -0.544655 -0.569144
+-0.593634 -0.618124 -0.642614 -0.667103 -0.691593 -0.716083 -0.739892
+-0.763702 -0.787511 -0.801797 -0.830368 -0.830368 -1.03037 -1.03037
+;
+#X coords 0 1 127 -1 200 140 1;
+#X restore 767 9 graph;
+#X obj 213 200 tabread4~ Wave1;
+#X obj 328 211 tabread4~ Wave2;
+#X obj 260 165 *~ 128;
+#X obj 363 187 *~ 128;
+#X text 509 291 <--;
+#X obj 197 61 >= 0;
+#X obj 148 82 select 0;
+#X text 174 627 with this Synthesizer you can draw your own waveforms.
+It sounds rather metallic and raw \, a bit like the PPG \, Microwave
+or my Microcomputer VST Plugin;
+#X obj 518 481 send Mix1;
+#X obj 518 500 send Mix2;
+#X obj 344 229 receive Mix1;
+#X obj 354 253 receive Mix2;
+#X obj 375 160 osc~;
+#X obj 272 138 osc~;
+#X text 412 157 <- usally the phasor is used for tablereading but here
+the sinus osc cycles back and forward.;
+#X text 459 31 draw your own waveforms ->;
+#X connect 0 0 17 0;
+#X connect 1 0 7 0;
+#X connect 1 0 10 0;
+#X connect 1 0 77 0;
+#X connect 2 0 61 0;
+#X connect 2 0 114 0;
+#X connect 3 0 91 0;
+#X connect 4 0 1 0;
+#X connect 4 1 5 0;
+#X connect 6 0 3 0;
+#X connect 9 0 12 0;
+#X connect 9 0 13 0;
+#X connect 9 0 32 0;
+#X connect 9 0 48 0;
+#X connect 10 0 2 0;
+#X connect 10 0 8 0;
+#X connect 10 0 106 0;
+#X connect 12 0 39 0;
+#X connect 13 0 35 0;
+#X connect 14 0 75 0;
+#X connect 15 0 14 2;
+#X connect 16 0 69 0;
+#X connect 19 0 20 0;
+#X connect 20 0 9 0;
+#X connect 24 0 28 0;
+#X connect 25 0 29 0;
+#X connect 30 0 32 1;
+#X connect 30 0 38 0;
+#X connect 31 0 39 1;
+#X connect 32 0 36 0;
+#X connect 33 0 13 1;
+#X connect 34 0 16 0;
+#X connect 35 0 34 0;
+#X connect 36 0 6 0;
+#X connect 37 0 6 0;
+#X connect 38 0 12 1;
+#X connect 39 0 37 0;
+#X connect 40 0 44 0;
+#X connect 41 0 45 0;
+#X connect 46 0 48 0;
+#X connect 46 0 33 0;
+#X connect 47 0 35 1;
+#X connect 48 0 72 0;
+#X connect 50 0 62 0;
+#X connect 51 0 61 0;
+#X connect 52 0 58 0;
+#X connect 53 0 109 0;
+#X connect 54 0 110 0;
+#X connect 55 0 59 0;
+#X connect 56 0 14 0;
+#X connect 57 0 14 0;
+#X connect 58 0 14 0;
+#X connect 60 0 58 1;
+#X connect 61 0 113 0;
+#X connect 62 0 61 1;
+#X connect 62 0 51 0;
+#X connect 63 0 50 0;
+#X connect 66 0 68 0;
+#X connect 67 0 73 0;
+#X connect 69 0 14 1;
+#X connect 70 0 71 0;
+#X connect 70 0 69 1;
+#X connect 71 0 14 1;
+#X connect 72 0 16 0;
+#X connect 74 0 75 1;
+#X connect 75 0 3 1;
+#X connect 76 0 15 0;
+#X connect 76 0 81 0;
+#X connect 77 0 79 0;
+#X connect 78 0 79 1;
+#X connect 79 0 80 0;
+#X connect 80 1 82 0;
+#X connect 81 0 74 0;
+#X connect 82 0 66 0;
+#X connect 88 0 91 1;
+#X connect 89 0 91 2;
+#X connect 90 0 91 3;
+#X connect 101 0 56 0;
+#X connect 102 0 57 0;
+#X connect 103 0 101 0;
+#X connect 104 0 102 0;
+#X connect 106 0 107 0;
+#X connect 107 1 9 0;
+#X connect 111 0 56 1;
+#X connect 112 0 57 1;
+#X connect 113 0 104 0;
+#X connect 114 0 103 0;

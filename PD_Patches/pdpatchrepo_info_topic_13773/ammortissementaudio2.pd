@@ -1,0 +1,69 @@
+#N canvas 104 134 979 518 12;
+#X obj 391 113 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 200 256;
+#X obj 461 113 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 300 256;
+#X obj 527 116 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 5e+06 256;
+#X obj 327 137 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 818 104 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 0 256;
+#X obj 446 222 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 446 250 metro 40;
+#X msg 327 105 0;
+#X obj 446 302 vsl 15 128 -1000 1000 0 0 empty empty empty 0 -9 0 10
+-262144 -1 -1 6350 1;
+#X obj 669 116 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 5.00009e+06 256;
+#X obj 37 292 dac~;
+#X obj 446 278 snapshot~;
+#X obj 512 322 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+-262144 -1 -1 -4.82421e-07 256;
+#X obj 37 258 /~ 1000;
+#X msg 461 87 300;
+#X obj 624 17 loadbang;
+#X obj 180 22 bng 50 250 50 0 empty empty empty 17 7 0 10 -4160 -260097
+-1;
+#X msg 527 87 5e+06;
+#X msg 669 91 5.00009e+06;
+#X msg 690 60 \; pd dsp 1;
+#X obj 37 199 fexpr~ pos2=pos2+vit2*0.0000001 \; vit2=(vit2*poid2/amor2-copysign(pow((pos2-centre2)
+\, 2) \, (pos2-centre2))*resi2) \;;
+#X obj 327 157 v vit2;
+#X obj 391 136 v pos2;
+#X obj 461 139 v resi2;
+#X obj 527 140 v poid2;
+#X obj 669 135 v amor2;
+#X obj 815 128 v centre2;
+#X text 475 356 This doesn't display anything useful \, since everything
+append at audio rate \, way above 40hz \, except maybe some kind of
+an enveloppe follower;
+#X msg 284 60 200;
+#X text 262 23 This equation is weird.;
+#X connect 0 0 22 0;
+#X connect 1 0 23 0;
+#X connect 2 0 24 0;
+#X connect 3 0 21 0;
+#X connect 4 0 26 0;
+#X connect 5 0 6 0;
+#X connect 6 0 11 0;
+#X connect 7 0 3 0;
+#X connect 9 0 25 0;
+#X connect 11 0 8 0;
+#X connect 11 0 12 0;
+#X connect 13 0 10 1;
+#X connect 13 0 10 0;
+#X connect 14 0 1 0;
+#X connect 15 0 18 0;
+#X connect 15 0 17 0;
+#X connect 15 0 14 0;
+#X connect 15 0 19 0;
+#X connect 16 0 28 0;
+#X connect 17 0 2 0;
+#X connect 18 0 9 0;
+#X connect 20 0 11 0;
+#X connect 20 0 13 0;
+#X connect 28 0 0 0;
+#X connect 28 0 7 0;

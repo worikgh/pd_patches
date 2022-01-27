@@ -1,0 +1,179 @@
+#N canvas 135 31 931 638 10;
+#X obj 241 530 dac~;
+#X obj 449 34 f;
+#X floatatom 565 -5 5 0 0 0 - - -;
+#X floatatom 465 59 5 0 0 0 - - -;
+#X text 605 -6 <-shows 1 if connected;
+#X text 505 58 <-step index 0-15;
+#X obj 682 313 vsl 8 128 0.5 100 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 0 1;
+#X obj 695 313 vsl 8 128 0.5 500 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 200 1;
+#X text 638 429 Attack;
+#X text 706 429 Release;
+#X obj 646 467 send AAttack;
+#X obj 646 488 send ARelease;
+#X text 646 508 Amplitude EG;
+#X obj 245 289 *~;
+#X obj 199 502 AccessLib/output~;
+#X obj 237 362 vsl 15 128 0 127 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 10100 1;
+#X obj 275 472 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0
+1;
+#X obj 276 382 hsl 128 15 0 127 0 0 empty empty empty -2 -6 32 8 -262144
+-1 -1 5100 1;
+#X obj 549 188 bng 15 250 50 0 empty empty empty 0 -6 32 8 -262144
+-1 -1;
+#X obj 449 -5 netreceive 3000;
+#N canvas 0 20 450 300 graph1 0;
+#X array sequenz 16 float 1;
+#A 0 0.178571 0.307142 0.399998 0.835707 0.699995 0.45714 0.371427
+0.374998 0.378569 0.399998 0.40714 0.414283 -0.0714259 0.207143 0.342855
+0.642852;
+#X array intens 16 float 1;
+#A 0 0.207142 0.22857 0.371426 0.478567 0.521424 0.585709 0.621423
+0.66428 0.714279 0.778564 0.714279 0.528567 0.407139 0.292855 0.17857
+0.157142;
+#X coords 0 1 15 0 200 140 1;
+#X restore 688 13 graph;
+#X obj 449 89 tabread sequenz;
+#X obj 549 145 > 0;
+#X obj 549 166 select 1;
+#X text 214 479 vol;
+#X text 282 368 panorama;
+#X text 261 458 mute;
+#X text 558 208 manualtrigger;
+#X obj 391 240 *~;
+#X obj 805 313 vsl 8 128 0.5 100 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 100 1;
+#X obj 818 313 vsl 8 128 0.5 500 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 6400 1;
+#X text 761 433 Attack;
+#X text 829 433 Release;
+#X obj 342 89 tabread intens;
+#X obj 769 467 send AAttack2;
+#X obj 769 488 send ARelease2;
+#X msg 581 237 \; intens 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \;;
+#X msg 581 270 \; sequenz 0 0.2 0.5 0.3 0.7 \;;
+#X obj 292 241 noise~;
+#X obj 199 247 *~;
+#X obj 199 309 +~;
+#X obj 215 155 vd~ tube;
+#X obj 199 77 vsl 8 128 0 1 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 11900 1;
+#X obj 278 130 sig~;
+#X floatatom 345 189 5 0 0 0 - - -;
+#X obj 207 330 delwrite~ tube 80;
+#X obj 345 150 * 20;
+#X obj 292 267 vcf~;
+#X floatatom 372 282 5 0 0 0 - - -;
+#X obj 345 126 f 0;
+#X obj 391 125 * 20000;
+#X text 163 101 decay (feedback);
+#N canvas 0 20 539 583 envelope1~ 0;
+#X obj 36 468 line~;
+#X obj 46 268 delay 2;
+#X obj 101 52 receive AAttack;
+#X obj 86 290 receive ARelease;
+#X obj 36 125 int 0.5;
+#X msg 46 371 0 \$1;
+#X obj 73 236 + 1;
+#X obj 46 332 int 1000;
+#X obj 14 12 inlet;
+#X text 58 12 <--recieves the triggering bang;
+#X text 81 489 output the AR Envelope;
+#X obj 36 510 outlet~;
+#X msg 36 149 0.5 \$1;
+#X connect 0 0 11 0;
+#X connect 1 0 7 0;
+#X connect 2 0 4 1;
+#X connect 2 0 6 0;
+#X connect 3 0 7 1;
+#X connect 4 0 12 0;
+#X connect 5 0 0 0;
+#X connect 6 0 1 1;
+#X connect 7 0 5 0;
+#X connect 8 0 4 0;
+#X connect 8 0 1 0;
+#X connect 12 0 0 0;
+#X restore 245 221 pd envelope1~;
+#N canvas 0 20 547 591 envelope2~ 0;
+#X obj 36 468 line~;
+#X obj 46 268 delay 2;
+#X obj 36 125 int 0.5;
+#X msg 46 371 0 \$1;
+#X obj 73 236 + 1;
+#X obj 46 332 int 1000;
+#X obj 14 12 inlet;
+#X text 58 12 <--recieves the triggering bang;
+#X text 81 489 output the AR Envelope;
+#X obj 36 510 outlet~;
+#X msg 36 149 0.5 \$1;
+#X obj 101 52 receive AAttack2;
+#X obj 86 290 receive ARelease2;
+#X connect 0 0 9 0;
+#X connect 1 0 5 0;
+#X connect 2 0 10 0;
+#X connect 3 0 0 0;
+#X connect 4 0 1 1;
+#X connect 5 0 3 0;
+#X connect 6 0 2 0;
+#X connect 6 0 1 0;
+#X connect 10 0 0 0;
+#X connect 11 0 2 1;
+#X connect 11 0 4 0;
+#X connect 12 0 5 1;
+#X restore 407 219 pd envelope2~;
+#X obj 431 260 vsl 8 128 0 100 0 0 empty empty empty 0 -8 32 8 -262144
+-1 -1 300 1;
+#X text 769 508 Filter EG;
+#X text 670 520 Impulse Shaping Envelopes;
+#X text 440 380 Resonanz;
+#X text 335 538 physical modelling synthesis / waveguide. An impulse
+\, here a shaped noise one \, is sent into a delayline \, the waveguide.
+The length of the delay means the frequency \, the feedback is the
+decay time. This is also refered as Karplus-Strong synthesis. Be careful
+\, due to feedback this can easy blast! Try other impulses because
+these define the tonecolor.;
+#X text 12 -1 physical modelling synthesizer by Malte Steiner \, Access
+Space Sheffield \, UK;
+#X connect 1 0 3 0;
+#X connect 1 0 21 0;
+#X connect 1 0 33 0;
+#X connect 6 0 10 0;
+#X connect 7 0 11 0;
+#X connect 13 0 40 1;
+#X connect 14 0 0 0;
+#X connect 14 1 0 1;
+#X connect 15 0 14 1;
+#X connect 16 0 14 2;
+#X connect 17 0 14 3;
+#X connect 18 0 52 0;
+#X connect 18 0 53 0;
+#X connect 18 0 49 0;
+#X connect 19 0 1 0;
+#X connect 19 1 2 0;
+#X connect 21 0 22 0;
+#X connect 21 0 49 1;
+#X connect 22 0 23 0;
+#X connect 23 0 18 0;
+#X connect 28 0 47 1;
+#X connect 29 0 34 0;
+#X connect 30 0 35 0;
+#X connect 33 0 50 0;
+#X connect 38 0 47 0;
+#X connect 39 0 40 0;
+#X connect 40 0 14 0;
+#X connect 40 0 45 0;
+#X connect 41 0 39 1;
+#X connect 42 0 39 0;
+#X connect 43 0 41 0;
+#X connect 46 0 43 0;
+#X connect 46 0 44 0;
+#X connect 47 0 13 1;
+#X connect 48 0 47 2;
+#X connect 49 0 46 0;
+#X connect 50 0 28 0;
+#X connect 52 0 13 0;
+#X connect 53 0 28 1;
+#X connect 54 0 48 0;

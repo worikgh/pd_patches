@@ -1,0 +1,60 @@
+#N canvas 144 179 776 474 10;
+#X obj 23 71 metro 100;
+#X floatatom 125 55 0 0 0 0 - - -;
+#X text 48 24 <--START;
+#X obj 451 208 netsend;
+#X obj 23 103 bng 15 250 50 0 empty empty empty 0 -6 32 8 -262144 -1
+-1;
+#X msg 196 178 send \$1;
+#X msg 220 213 connect localhost 3000;
+#X floatatom 451 235 5 0 0 0 - - -;
+#X obj 23 150 int 0;
+#X obj 71 183 + 1;
+#X floatatom 23 235 5 0 0 0 - - -;
+#X obj 23 24 tgl 15 0 empty empty empty 0 -6 32 8 -262144 -1 -1 0 1
+;
+#X obj 71 202 mod 16;
+#X obj 220 298 netsend;
+#X floatatom 220 327 5 0 0 0 - - -;
+#X text 7 256 stepnumber (0-15);
+#X text 92 216 counterlogic;
+#X msg 461 151 disconnect;
+#X msg 231 240 disconnect;
+#X text 198 163 form a sendmessage;
+#X msg 451 123 connect 192.168.1.79 3000;
+#X text 276 284 connect to yourself. When you want to run more than
+one patches on the same computer each needs to have a own send with
+own portnumber (3001 \, 3002 \, ...);
+#X text 418 92 connect to another computer just place the right tcp/ip
+number in;
+#X text 55 327 shows 1 if connected ->;
+#X text 30 378 This is the mistress clock \, she sends over tcp/ip
+network just a step number between 0 and 15 to keep the stepsequencer
+in sync. Double the netsend for connecting more synthpatches to the
+clock.;
+#X text 368 437 Malte Steiner \, Access Space Sheffield \, UK;
+#X text 154 57 <--msec between two steps;
+#X obj 125 4 loadbang;
+#X msg 125 28 130;
+#X text 152 28 default on load \, its not BPM!!;
+#X text 341 169 disconnect gentle before close remote patch \, otherwise
+the Mistress Clock crashes;
+#X connect 0 0 4 0;
+#X connect 1 0 0 1;
+#X connect 3 0 7 0;
+#X connect 4 0 8 0;
+#X connect 5 0 13 0;
+#X connect 5 0 3 0;
+#X connect 6 0 13 0;
+#X connect 8 0 9 0;
+#X connect 8 0 10 0;
+#X connect 8 0 5 0;
+#X connect 9 0 12 0;
+#X connect 11 0 0 0;
+#X connect 12 0 8 1;
+#X connect 13 0 14 0;
+#X connect 17 0 3 0;
+#X connect 18 0 13 0;
+#X connect 20 0 3 0;
+#X connect 27 0 28 0;
+#X connect 28 0 1 0;

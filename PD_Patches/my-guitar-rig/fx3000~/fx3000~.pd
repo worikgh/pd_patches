@@ -1,0 +1,189 @@
+#N canvas 2 64 1366 676 10;
+#X msg 483 528 0 \$1;
+#X msg 524 528 1 \$1;
+#X obj 66 27 loadbang;
+#X obj 101 263 cnv 15 303 398 empty empty FX3000 2 12 0 21 -228856
+-66577 0;
+#X obj 124 399 tgl 256 0 \$0-fx3000-by \$0-fx3000-byr BY 110 128 0
+36 -262144 -1 -1 0 1;
+#X msg 948 192 0 0.8333;
+#X obj 1064 259 tgl 15 0 empty \$0-fx3000-by empty 17 7 0 10 -262144
+-1 -1 0 1;
+#X floatatom 1026 334 5 0 0 0 - - -;
+#X obj 1064 279 sel 0 1;
+#X msg 1082 332 0, f 4;
+#X floatatom 590 355 5 0 0 0 - - -;
+#X msg 481 184 0, f 4;
+#X obj 168 38 del 250;
+#X obj 943 460 s~ fx3000-\$1-OUT;
+#X obj 264 264 bng 24 250 50 0 empty empty R 6 12 0 21 -262144 -1 -1
+;
+#X obj 193 110 t b b b b;
+#X msg 66 122 1;
+#X msg 169 220 0.75;
+#X obj 335 166 / 1000;
+#X obj 264 162 / 1000;
+#X obj 975 32 r~ fx3000-out-\$1;
+#X obj 336 139 random 1000;
+#X obj 263 138 random 1000;
+#X obj 413 163 / 1000;
+#X obj 412 139 random 1000;
+#X obj 195 161 / 1000;
+#X obj 191 138 random 1000;
+#X obj 932 640 s \$0-p1-name;
+#X obj 1020 638 s \$0-p2-name;
+#X obj 106 292 vsl 68 60 0 1 0 0 \$0-fx3000-drywet empty DPTH 6 48
+0 21 -262144 -1 -1 5900 1;
+#X obj 192 292 vsl 60 60 0 1 0 0 empty \$0-p1-name gan 9 48 0 21 -262144
+-1 -1 4425 1;
+#X obj 264 292 vsl 60 60 0 1 0 0 empty \$0-p2-name na 9 48 0 21 -262144
+-1 -1 4425 1;
+#X text 103 358 DEPTH;
+#X text 554 606 0) the audio signal \; 1) thy bypass [0|1] \; 2) the
+selected eff [0..29] \; 3) the parameter values as [0 \, 1 \, 2 \$1]
+;
+#X obj 334 292 vsl 60 60 0 1 0 0 empty \$0-p3-name na 9 48 0 21 -262144
+-1 -1 4425 1;
+#X msg 568 529 2 \$1;
+#X obj 590 262 nbx 2 24 0 29 0 0 empty empty empty 0 -8 0 21 -262144
+-1 -1 0 256;
+#X obj 1104 640 s \$0-p3-name;
+#X obj 103 359 cnv 23 300 27 empty \$0-cheff 0-raw 2 12 0 21 -1 -262144
+0;
+#X obj 862 642 s \$0-cheff;
+#X msg 862 601 label \$1;
+#X msg 931 601 label \$1;
+#X msg 1015 603 label \$1;
+#X msg 1084 603 label \$1;
+#X obj 100 84 f \$1;
+#X floatatom 100 107 5 0 0 0 - - -;
+#X obj 100 129 s \$0-id;
+#X obj 870 340 fx3000~/dry-wet(s);
+#X obj 870 371 fx3000~/zexy(booter-limiter)~;
+#X obj 430 606 fx3000~/router~ \$1;
+#X obj 431 638 s~ fx3000-out-\$1;
+#X obj 862 540 r \$0-fx3000-choseff;
+#X obj 1084 34 r \$0-fx3000-drywet;
+#X obj 1062 306 v \$0-fx3000-curlvl;
+#X obj 264 29 r fx3000-rndsetter-\$1;
+#X obj 870 29 r~ fx3000-in-\$1;
+#X obj 430 570 r~ fx3000-in-\$1;
+#X obj 590 386 s \$0-fx3000-choseff;
+#X obj 316 263 fx3000~/abspre \$1;
+#X obj 418 272 unpack f f f f f f;
+#X msg 420 321 \$1 \$2 \$2 \$4 \$5 \$6;
+#X obj 862 573 fx3000~/geteffnameandparamabrevs;
+#X obj 420 297 pack f f f f f f;
+#X obj 7 29 inlet~;
+#X obj 870 463 outlet~;
+#X msg 642 53 clear;
+#X obj 590 205 tof/pmenu 1 1 black white red;
+#X floatatom 590 228 5 0 0 0 - - -;
+#X obj 591 23 loadbang;
+#X obj 230 264 bng 24 250 50 0 empty empty EFF -36 12 0 18 -262144
+-1 -1;
+#X obj 591 46 t b b;
+#X obj 743 29 r~ \$0-fx3000-inlet~;
+#X obj 8 226 s~ \$0-fx3000-inlet~;
+#X obj 419 30 inlet;
+#X obj 462 30 r PREIN-\$1;
+#X text 865 490 the labels;
+#X text 974 376 the bypass and the zexy~ booster-limiter;
+#X msg 591 84 add 0-raw audioflow(v) beatlooper(v) chorus(s) delay(3tap)(d)
+delay(fb)(d) delay(pitch)(v) delay(push)(v) delay(revtape)(g) delay(spect)(g)
+delay(tbr)(v) delay(wavey)(v) detuning(g) distortion(d) flanger(s)
+hexxciter(g) looper(fw-bw)(v) octave_harmonizer(p) phaser(s) pitchshifter(d)
+reverb(pure)(d) ringmod(g) shaper(d) filter(s) tremolo(d) vcf(d) vibrato(d)
+vibrato(step)(g) wah-wah(g) wavedistort(d);
+#X connect 0 0 49 3;
+#X connect 1 0 49 3;
+#X connect 2 0 5 0;
+#X connect 2 0 16 0;
+#X connect 2 0 12 0;
+#X connect 2 0 44 0;
+#X connect 4 0 49 1;
+#X connect 4 0 62 5;
+#X connect 5 0 48 1;
+#X connect 6 0 8 0;
+#X connect 7 0 47 2;
+#X connect 8 0 53 0;
+#X connect 8 1 9 0;
+#X connect 9 0 7 0;
+#X connect 10 0 57 0;
+#X connect 11 0 36 0;
+#X connect 12 0 11 0;
+#X connect 12 0 17 0;
+#X connect 14 0 15 0;
+#X connect 15 0 26 0;
+#X connect 15 1 22 0;
+#X connect 15 2 21 0;
+#X connect 15 3 24 0;
+#X connect 16 0 29 0;
+#X connect 17 0 30 0;
+#X connect 17 0 31 0;
+#X connect 17 0 34 0;
+#X connect 18 0 30 0;
+#X connect 19 0 31 0;
+#X connect 20 0 47 1;
+#X connect 21 0 18 0;
+#X connect 22 0 19 0;
+#X connect 23 0 29 0;
+#X connect 24 0 23 0;
+#X connect 25 0 34 0;
+#X connect 26 0 25 0;
+#X connect 29 0 62 0;
+#X connect 30 0 0 0;
+#X connect 30 0 62 1;
+#X connect 31 0 1 0;
+#X connect 31 0 62 2;
+#X connect 34 0 35 0;
+#X connect 34 0 62 3;
+#X connect 35 0 49 3;
+#X connect 36 0 10 0;
+#X connect 36 0 49 2;
+#X connect 36 0 62 4;
+#X connect 40 0 39 0;
+#X connect 41 0 27 0;
+#X connect 42 0 28 0;
+#X connect 43 0 37 0;
+#X connect 44 0 45 0;
+#X connect 45 0 46 0;
+#X connect 47 0 48 0;
+#X connect 47 1 48 0;
+#X connect 48 0 13 0;
+#X connect 48 0 64 0;
+#X connect 49 0 50 0;
+#X connect 51 0 61 0;
+#X connect 52 0 7 0;
+#X connect 52 0 53 0;
+#X connect 53 0 7 0;
+#X connect 54 0 14 0;
+#X connect 55 0 47 0;
+#X connect 56 0 49 0;
+#X connect 58 0 62 0;
+#X connect 58 1 59 0;
+#X connect 59 0 29 0;
+#X connect 59 1 30 0;
+#X connect 59 2 31 0;
+#X connect 59 3 34 0;
+#X connect 59 4 36 0;
+#X connect 59 5 4 0;
+#X connect 60 0 58 0;
+#X connect 61 0 40 0;
+#X connect 61 1 41 0;
+#X connect 61 2 42 0;
+#X connect 61 3 43 0;
+#X connect 62 0 60 0;
+#X connect 63 0 72 0;
+#X connect 65 0 66 0;
+#X connect 66 0 67 0;
+#X connect 67 0 36 0;
+#X connect 68 0 70 0;
+#X connect 69 0 66 0;
+#X connect 70 0 77 0;
+#X connect 70 1 65 0;
+#X connect 71 0 47 0;
+#X connect 73 0 59 0;
+#X connect 74 0 59 0;
+#X connect 77 0 66 0;
+#X coords 0 -1 1 1 305 404 2 100 260;

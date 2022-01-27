@@ -1,0 +1,53 @@
+#N canvas 0 0 1366 712 12;
+#X obj 502 348 *~;
+#X floatatom 487 53 5 0 0 0 - - - 0;
+#X floatatom 517 260 5 0 0 0 - - - 0;
+#X obj 231 154 mtof;
+#X obj 517 235 / 60;
+#X obj 521 299 osc~;
+#X floatatom 221 223 5 0 0 0 - - - 0;
+#X obj 92 10 inlet;
+#X text 21 11 Midi note;
+#X obj 504 397 outlet~;
+#X msg 433 212 0.25;
+#X obj 419 22 loadbang;
+#X obj 492 7 inlet;
+#X text 543 8 Vibrato;
+#X floatatom 91 57 5 0 0 0 - - - 0;
+#X obj 175 292 phasor~ 220;
+#X msg 458 168 0.3;
+#X obj 458 148 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 269 290 phasor~;
+#X obj 406 184 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 484 215 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X msg 467 245 0.1;
+#X obj 365 188 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X msg 362 208 0.5;
+#X floatatom 312 237 5 0 0 0 - - - 0;
+#X connect 0 0 9 0;
+#X connect 1 0 4 0;
+#X connect 2 0 5 0;
+#X connect 3 0 6 0;
+#X connect 4 0 2 0;
+#X connect 5 0 0 1;
+#X connect 6 0 15 0;
+#X connect 6 0 18 0;
+#X connect 7 0 14 0;
+#X connect 10 0 24 0;
+#X connect 11 0 10 0;
+#X connect 12 0 1 0;
+#X connect 14 0 3 0;
+#X connect 15 0 0 0;
+#X connect 16 0 24 0;
+#X connect 17 0 16 0;
+#X connect 18 0 0 0;
+#X connect 19 0 10 0;
+#X connect 20 0 21 0;
+#X connect 21 0 24 0;
+#X connect 22 0 23 0;
+#X connect 23 0 24 0;
+#X connect 24 0 18 1;

@@ -1,0 +1,20 @@
+#N canvas 780 85 521 514 12;
+#X declare -path r_cycle;
+#X obj 352 487 declare -path r_cycle;
+#X obj 49 96 LP_GUI;
+#X obj 49 3 loadbang;
+#X msg 49 53 device LP_X;
+#X obj 259 37 DRUM_PADS;
+#X obj 260 1 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X floatatom 259 62 5 0 0 0 - - - 0;
+#X floatatom 313 67 5 0 0 0 - - - 0;
+#X floatatom 368 69 5 0 0 0 - - - 0;
+#X msg 418 69;
+#X connect 2 0 3 0;
+#X connect 3 0 1 0;
+#X connect 4 0 6 0;
+#X connect 4 1 7 0;
+#X connect 4 2 8 0;
+#X connect 4 3 9 0;
+#X connect 5 0 4 0;
