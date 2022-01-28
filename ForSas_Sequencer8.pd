@@ -1,4 +1,4 @@
-#N canvas 95 120 988 514 12;
+#N canvas 411 121 988 514 12;
 #X obj 17 132 metro;
 #X obj 48 4 loadbang;
 #X msg 55 24 120;
@@ -15,7 +15,7 @@
 #X floatatom 17 251 5 0 0 0 - - -;
 #X msg 60 171 1;
 #X obj 17 275 hradio 16 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
--1 4;
+-1 2;
 #X obj 854 1082 WTSMidiElement;
 #X obj 971 1082 WTSMidiElement;
 #X obj 1097 1082 WTSMidiElement;
@@ -36,7 +36,7 @@
 #X obj 17 226 mod 8;
 #X obj 1219 521 bng 15 250 50 0 empty \$0-mdel7 empty 17 7 0 10 -262144
 -1 -1;
-#N canvas 25 239 1252 326 MidiElements 1;
+#N canvas 20 115 1258 326 MidiElements 0;
 #X obj 293 10 WTSMidiElement;
 #X floatatom 294 190 5 0 0 0 - - -;
 #X obj 277 250 f;
@@ -93,11 +93,35 @@
 -1 -1;
 #X obj 631 192 bng 15 250 50 0 empty \$0-mdel2 empty 17 7 0 10 -262144
 -1 -1;
-#X obj 380 192 bng 15 250 50 0 empty \$0-mdel0 empty 17 7 0 10 -262144
+#X obj 335 194 bng 15 250 50 0 empty \$0-mdel0 empty 17 7 0 10 -262144
 -1 -1;
 #X obj 501 191 bng 15 250 50 0 empty \$0-mdel1 empty 17 7 0 10 -262144
 -1 -1;
 #X obj 490 389 outlet frequency;
+#X obj 324 -47 loadbang;
+#X msg 324 -23 -2;
+#X obj 445 -51 loadbang;
+#X msg 445 -25 -2;
+#X obj 574 -52 loadbang;
+#X msg 574 -27 -2;
+#X obj 682 -56 loadbang;
+#X msg 682 -31 -2;
+#X obj 805 -54 loadbang;
+#X msg 805 -29 -2;
+#X obj 926 -53 loadbang;
+#X msg 926 -28 -2;
+#X obj 1055 -54 loadbang;
+#X msg 1055 -29 -2;
+#X obj 1163 -53 loadbang;
+#X msg 1163 -28 -2;
+#X msg 1020 -29 7;
+#X msg 293 -23 5;
+#X msg 414 -26 7;
+#X msg 543 -27 4;
+#X msg 651 -31 3;
+#X msg 774 -30 7;
+#X msg 1132 -25 8;
+#X msg 889 -28 5;
 #X connect 0 0 1 0;
 #X connect 1 0 2 1;
 #X connect 2 0 6 0;
@@ -141,21 +165,53 @@
 #X connect 39 0 7 0;
 #X connect 42 0 2 0;
 #X connect 44 0 28 0;
+#X connect 53 0 54 0;
+#X connect 53 0 70 0;
+#X connect 54 0 0 1;
+#X connect 55 0 56 0;
+#X connect 55 0 71 0;
+#X connect 56 0 3 1;
+#X connect 57 0 58 0;
+#X connect 57 0 72 0;
+#X connect 58 0 8 1;
+#X connect 59 0 60 0;
+#X connect 59 0 73 0;
+#X connect 60 0 11 1;
+#X connect 61 0 62 0;
+#X connect 61 0 74 0;
+#X connect 62 0 17 1;
+#X connect 63 0 64 0;
+#X connect 63 0 76 0;
+#X connect 64 0 20 1;
+#X connect 65 0 66 0;
+#X connect 65 0 69 0;
+#X connect 66 0 23 1;
+#X connect 67 0 68 0;
+#X connect 67 0 75 0;
+#X connect 68 0 26 1;
+#X connect 69 0 23 0;
+#X connect 70 0 0 0;
+#X connect 71 0 3 0;
+#X connect 72 0 8 0;
+#X connect 73 0 11 0;
+#X connect 74 0 17 0;
+#X connect 75 0 26 0;
+#X connect 76 0 20 0;
 #X restore 348 13 pd MidiElements;
 #X obj 380 75 dac~;
-#N canvas 442 153 559 340 SynthMoogish~ 0;
-#X obj -79 272 output~;
+#N canvas 442 153 831 465 SynthMoogish~ 0;
+#X obj -76 320 output~;
 #X obj -77 72 WTSBob~;
 #X floatatom -77 38 5 0 0 0 - - -;
-#X msg -59 247 100;
+#X msg -56 295 100;
 #X obj -128 189 loadbang;
-#X obj 28 282 hsl 128 15 0 100 0 0 empty empty empty -2 -8 0 10 -262144
+#X obj 31 330 hsl 128 15 0 100 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 6350 1;
-#X msg -10 247 0;
-#X obj 66 231 loadbang;
-#X msg 66 256 50;
-#X obj -84 305 outlet~;
-#X obj -11 302 outlet~;
+#X msg -7 295 0;
+#X obj 69 279 loadbang;
+#X msg 69 304 50;
+#X obj -81 353 outlet~;
+#X obj -8 350 outlet~;
 #X obj -77 5 inlet Frequency;
 #X connect 0 0 9 0;
 #X connect 0 1 10 0;
