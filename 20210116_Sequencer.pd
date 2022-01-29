@@ -1,37 +1,37 @@
-#N canvas 658 180 450 469 12;
-#X obj 11 10 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
-0 1;
-#X floatatom 71 9 5 0 0 0 - - - 0;
+#N canvas 642 81 450 579 12;
+#X obj 11 10 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
+;
+#X floatatom 71 9 5 0 0 0 - - -;
 #X obj 11 46 metro 300;
 #X obj 11 71 f;
 #X obj 68 72 + 1;
-#X floatatom 11 96 5 0 0 0 - - - 0;
+#X floatatom 11 96 5 0 0 0 - - -;
 #X obj 11 120 mod 4;
-#X obj 11 145 hradio 16 1 0 4 empty empty empty 0 -8 0 10 #fcfcfc #000000
-#000000 0;
+#X obj 11 145 hradio 16 1 0 4 empty empty empty 0 -8 0 10 -262144 -1
+-1 1;
 #X obj 11 166 select 0 1 2 3;
-#X obj 34 215 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X floatatom 34 349 5 0 0 0 - - - 0;
+#X obj 34 215 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 7000 1;
+#X floatatom 34 349 5 0 0 0 - - -;
 #X obj 15 375 f;
-#X obj 89 217 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X floatatom 89 351 5 0 0 0 - - - 0;
+#X obj 89 217 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 7700 1;
+#X floatatom 89 351 5 0 0 0 - - -;
 #X obj 70 377 f;
-#X obj 141 221 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X floatatom 141 355 5 0 0 0 - - - 0;
+#X obj 141 221 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6400 1;
+#X floatatom 141 355 5 0 0 0 - - -;
 #X obj 122 381 f;
-#X obj 211 227 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 #fcfcfc
-#000000 #000000 0 1;
-#X floatatom 211 361 5 0 0 0 - - - 0;
+#X obj 211 227 vsl 15 128 0 127 0 0 empty empty empty 0 -9 0 10 -262144
+-1 -1 6800 1;
+#X floatatom 211 361 5 0 0 0 - - -;
 #X obj 192 387 f;
 #X obj 38 468 mtof;
-#X obj 38 523 osc~;
-#X obj 39 512 dac~;
-#X floatatom 94 501 5 0 0 0 - - - 0;
-#X floatatom 15 404 5 0 0 0 - - - 0;
-#X floatatom 70 402 5 0 0 0 - - - 0;
+#X obj 29 501 osc~;
+#X obj 40 545 dac~;
+#X floatatom 94 501 5 0 0 0 - - -;
+#X floatatom 15 404 5 0 0 0 - - -;
+#X floatatom 70 402 5 0 0 0 - - -;
 #X text 96 41 http://floss.booktype.pro/pure-data/sequencer/;
 #X connect 0 0 2 0;
 #X connect 1 0 2 1;

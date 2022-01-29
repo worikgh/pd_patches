@@ -1,13 +1,13 @@
-#N canvas -10 9 1361 593 12;
+#N canvas 46 109 1361 593 12;
 #X obj 405 375 bob~;
-#X floatatom 154 118 5 0 150 0 - - - 0;
+#X floatatom 154 118 5 0 150 0 - - -;
 #X obj 154 139 mtof;
 #X obj 155 184 pack 0 50;
 #X obj 155 209 line~;
-#X floatatom 154 162 7 0 0 0 - - - 0;
+#X floatatom 154 162 7 0 0 0 - - -;
 #X obj 155 42 loadbang;
 #X msg 155 68 69;
-#X floatatom 301 155 5 0 200 0 - - - 0;
+#X floatatom 301 155 5 0 200 0 - - -;
 #X obj 301 186 / 25;
 #X text 312 -1 "resonance";
 #X text 311 16 (>4 to oscillate);
@@ -17,17 +17,17 @@
 #X msg 301 78 10;
 #X obj 300 214 line~;
 #X obj 404 560 outlet~;
-#X obj 645 207 vsl 15 128 12 120 0 0 empty empty Cutoff 0 -9 0 10 #0400ff
-#ff0400 #0400ff 0 1;
-#X floatatom 644 339 5 0 0 0 - - - 0;
+#X obj 645 207 vsl 15 128 12 120 0 0 empty empty Cutoff 0 -9 0 10 -4160
+-258113 -4160 6703 1;
+#X floatatom 644 339 5 0 0 0 - - -;
 #X text 152 4 resonant or cutoff frequency, f 16;
 #X obj 203 119 s def_cutoff;
 #X obj 645 145 r def_cutoff;
-#X floatatom 1156 392 5 0 999 0 - - - 0;
+#X floatatom 1156 392 5 0 999 0 - - -;
 #X msg 1156 438 saturation \$1;
 #X obj 1156 294 loadbang;
 #X obj 1156 414 / 100;
-#X floatatom 1153 125 5 1 10 0 - - - 0;
+#X floatatom 1153 125 5 1 10 0 - - -;
 #X text 1149 9 oversampling;
 #X msg 1153 152 oversample \$1;
 #X obj 1153 32 loadbang;
@@ -41,22 +41,22 @@
 #X obj 270 307 r oversample;
 #X obj 405 289 r~ sound_in;
 #N canvas 743 303 450 300 test 0;
-#X obj 102 122 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 102 122 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X obj 313 127 min~;
 #X obj 357 103 -~ 1;
 #X obj 357 128 *~ -50;
-#X floatatom 102 102 5 0 128 0 - - - 0;
+#X floatatom 102 102 5 0 128 0 - - -;
 #X obj 235 72 mtof;
-#X obj 102 141 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 102 141 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
 #X text 196 32 test signal;
 #X text 147 102 pitch;
 #X text 119 140 sawtooth;
 #X obj 312 70 phasor~ 220;
 #X obj 233 107 osc~ 220;
-#X obj 102 160 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
-#000000 0 1;
+#X obj 102 160 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X text 121 120 sine;
 #X text 120 159 noise;
 #X obj 62 24 loadbang;
@@ -92,14 +92,14 @@
 #X restore 670 260 pd test;
 #X obj 671 371 s~ sound_in;
 #X obj 18 16 inlet;
-#X floatatom 18 41 5 0 0 0 - - - 0;
+#X floatatom 18 41 5 0 0 0 - - -;
 #X obj 18 65 s midi_note;
 #X obj 670 170 r midi_note;
 #X obj 588 206 vsl 15 128 0 200 0 0 empty empty Resonance -20 -10 0
-10 #ff8300 #ff0400 #ff8300 0 1;
+10 -260097 -258113 -260097 635 1;
 #X obj 357 131 s def_resonance;
 #X obj 589 111 r def_resonance;
-#X floatatom 588 338 5 0 0 0 - - - 0;
+#X floatatom 588 338 5 0 0 0 - - -;
 #X obj 357 89 r resonance_a;
 #X obj 588 429 s resonance_a;
 #X obj 204 67 r cutoff_a;
@@ -109,12 +109,12 @@
 #X obj 300 239 s~ resonance;
 #X obj 430 335 r~ resonance;
 #X obj 783 208 vsl 15 128 0 999 0 0 empty empty Saturation -26 -9 0
-10 #bbbbbb #ff0400 #606060 0 1;
+10 -191407 -258113 -99865 3814 1;
 #X obj 834 209 vsl 15 128 1 10 0 0 empty empty Oversample -15 -9 0
-10 #404040 #ff0400 #404040 0 1;
-#X floatatom 834 341 5 0 0 0 - - - 0;
+10 -66577 -258113 -66577 1411 1;
+#X floatatom 834 341 5 0 0 0 - - -;
 #X obj 834 366 s oversample_a;
-#X floatatom 783 340 5 0 0 0 - - - 0;
+#X floatatom 783 340 5 0 0 0 - - -;
 #X obj 783 390 s saturation_a;
 #X obj 1044 345 r saturation_a;
 #X obj 1037 390 s def_saturation;
@@ -173,4 +173,4 @@
 #X connect 66 0 58 0;
 #X connect 67 0 59 0;
 #X connect 69 0 27 0;
-#X coords 0 -1 1 1 330 170 2 550 190;
+#X coords 0 -1 1 1 330 190 1 550 170;
