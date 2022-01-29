@@ -1,9 +1,9 @@
-#N canvas 401 117 494 403 12;
+#N canvas 135 129 700 403 12;
 #X obj 117 54 poly 6 1;
 #X obj 117 78 pack 0 0 0;
 #X obj 117 103 route 1 2 3 4 5 6;
 #X obj 114 207 expr~ $v1+$v2+$v3+$v4+$v5+$v6;
-#X floatatom 72 54 5 0 0 0 - - - 0;
+#X floatatom 72 54 5 0 0 0 - - -;
 #X text 238 27 http://archive.anthonymattox.com/2007-2011-blog/index.html%3Fp=2631.html
 ;
 #X obj 119 5 notein 1;
@@ -14,6 +14,11 @@
 #X obj 241 132 st2;
 #X obj 289 132 st2;
 #X obj 350 134 st2;
+#X obj 139 244 loadbang;
+#X msg 139 269 100;
+#X obj 214 245 loadbang;
+#X msg 214 276 50;
+#X obj 116 351 dac~;
 #X connect 0 0 1 0;
 #X connect 0 1 1 1;
 #X connect 0 2 1 2;
@@ -25,13 +30,18 @@
 #X connect 2 5 12 0;
 #X connect 2 6 13 0;
 #X connect 3 0 7 0;
-#X connect 3 0 7 1;
 #X connect 6 0 0 0;
 #X connect 6 0 4 0;
 #X connect 6 1 0 1;
+#X connect 7 0 18 0;
+#X connect 7 1 18 1;
 #X connect 8 0 3 0;
 #X connect 9 0 3 1;
 #X connect 10 0 3 2;
 #X connect 11 0 3 3;
 #X connect 12 0 3 4;
 #X connect 13 0 3 5;
+#X connect 14 0 15 0;
+#X connect 15 0 7 1;
+#X connect 16 0 17 0;
+#X connect 17 0 7 3;
