@@ -1,1 +1,3 @@
 https://forum.pdpatchrepo.info/topic/13514/demonstration-of-the-5-basic-synthesizer-modulation-types
+
+https://github.com/MikeMorenoDSP/pd-mkmr.git
