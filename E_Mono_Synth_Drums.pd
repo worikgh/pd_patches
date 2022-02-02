@@ -1,4 +1,4 @@
-#N canvas 33 113 896 588 10;
+#N canvas 136 64 896 588 10;
 #X declare -path r_cycle;
 #X declare -path ../;
 #X obj 460 187 / 127;
@@ -8,10 +8,10 @@
 #X obj 409 314 TAPE_DELAY;
 #X obj 409 437 *~;
 #X obj 487 206 r \$0_synth_wform;
-#X obj 648 484 dac~;
-#X obj 648 453 *~ 0.9;
+#X obj 648 526 dac~;
+#X obj 648 495 *~ 0.9;
 #X obj 696 68 DEVICE_SELECT;
-#X obj 648 423 MULTI_SAMPLER 4;
+#X obj 648 465 MULTI_SAMPLER 4;
 #X obj 21 15 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
 ;
 #X msg 21 35 status \$1;
@@ -92,7 +92,7 @@
 #X connect 25 0 26 0;
 #X connect 26 0 20 2;
 #X restore 21 491 pd SYNTH_GUI;
-#X obj 750 422 cnv 15 50 25 empty empty DRUMS 5 12 0 12 -261682 -66577
+#X obj 750 464 cnv 15 50 25 empty empty DRUMS 5 12 0 12 -261682 -66577
 0;
 #X obj 44 5 cnv 15 90 25 empty empty TURN_ON_GUI 4 12 0 12 -258113
 -66577 0;
@@ -191,6 +191,11 @@ IS" BASIS \, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND \, either
 express or implied.;
 #X text 20 771 See the License for the specific language governing
 permissions and limitations under the License.;
+#X floatatom 358 69 5 0 0 0 - - -;
+#X floatatom 409 47 5 0 0 0 - - -;
+#X obj 358 9 notein 17;
+#X floatatom 646 422 5 0 0 0 - - -;
+#X floatatom 701 432 5 0 0 0 - - -;
 #X connect 0 0 2 1;
 #X connect 2 0 4 0;
 #X connect 4 0 5 0;
@@ -210,5 +215,11 @@ permissions and limitations under the License.;
 #X connect 25 0 5 1;
 #X connect 26 0 22 0;
 #X connect 27 0 10 0;
-#X connect 30 0 10 0;
-#X connect 30 1 10 1;
+#X connect 30 0 40 0;
+#X connect 30 1 41 0;
+#X connect 37 0 2 0;
+#X connect 38 0 0 0;
+#X connect 39 0 37 0;
+#X connect 39 1 38 0;
+#X connect 40 0 10 0;
+#X connect 41 0 10 1;

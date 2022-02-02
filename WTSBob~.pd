@@ -18,7 +18,7 @@
 #X obj 300 214 line~;
 #X obj 404 560 outlet~;
 #X obj 645 207 vsl 15 128 12 120 0 0 empty empty Cutoff 0 -9 0 10 -4160
--258113 -4160 6703 1;
+-258113 -4160 7803 1;
 #X floatatom 644 339 5 0 0 0 - - -;
 #X text 152 4 resonant or cutoff frequency, f 16;
 #X obj 203 119 s def_cutoff;
@@ -96,7 +96,7 @@
 #X obj 18 65 s midi_note;
 #X obj 670 170 r midi_note;
 #X obj 588 206 vsl 15 128 0 200 0 0 empty empty Resonance -20 -10 0
-10 -260097 -258113 -260097 635 1;
+10 -260097 -258113 -260097 5935 1;
 #X obj 357 131 s def_resonance;
 #X obj 589 111 r def_resonance;
 #X floatatom 588 338 5 0 0 0 - - -;
@@ -122,6 +122,9 @@
 #X obj 834 149 r def_oversample;
 #X obj 1026 127 s def_oversample;
 #X obj 1027 50 r oversample_a;
+#X obj 582 28 loadbang;
+#X msg 566 57 92.91;
+#X msg 624 64 78.33;
 #X connect 0 0 17 0;
 #X connect 1 0 2 0;
 #X connect 2 0 5 0;
@@ -173,4 +176,8 @@
 #X connect 66 0 58 0;
 #X connect 67 0 59 0;
 #X connect 69 0 27 0;
+#X connect 70 0 71 0;
+#X connect 70 0 72 0;
+#X connect 71 0 46 0;
+#X connect 72 0 18 0;
 #X coords 0 -1 1 1 330 190 1 550 170;
