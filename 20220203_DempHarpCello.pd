@@ -1,0 +1,9 @@
+#N canvas 3 202 1094 300 12;
+#X obj 10 5 WTSHarp;
+#X obj 10 220 WTSOutput~;
+#X obj 530 23 WTSCello~;
+#X obj 530 168 WTSOutput~;
+#X text 344 10 WTSHarp;
+#X text 742 20 WTSCello;
+#X connect 0 0 1 0;
+#X connect 2 0 3 0;
