@@ -1,0 +1,28 @@
+#N canvas 126 87 679 667 12;
+#X obj 103 228 WTSLoop~;
+#X obj 108 42 WTSCello~;
+#X obj 103 414 WTSOutput~;
+#X floatatom 373 102 0 0 0 0 - - -;
+#X floatatom 357 131 0 0 0 0 - - -;
+#X floatatom 389 69 0 0 0 0 - - -;
+#X obj 357 44 ctlin;
+#X text 388 132 value;
+#X text 401 43 (all controllers \, omni);
+#X text 404 102 controller #;
+#X text 420 70 channel/port;
+#X floatatom 382 319 5 0 0 0 - - -;
+#X obj 451 301 ctlin 95 1;
+#X obj 451 325 trigger b;
+#X obj 408 354 bng 15 250 50 0 empty \$0-Tog empty 17 7 0 10 -262144
+-1 -1;
+#X obj 451 350 s \$0-Tog;
+#X connect 0 0 2 0;
+#X connect 1 0 0 0;
+#X connect 6 0 4 0;
+#X connect 6 1 3 0;
+#X connect 6 2 5 0;
+#X connect 12 0 13 0;
+#X connect 12 0 11 0;
+#X connect 13 0 15 0;
+#X connect 13 0 15 0;
+#X connect 13 0 14 0;

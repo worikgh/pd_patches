@@ -16,7 +16,7 @@
 #X obj 186 5 notein;
 #X floatatom 227 30 5 0 0 0 - - -;
 #X obj 187 373 outlet~;
-#X obj 186 166 clone -s 1 pd-mkmr/instruments/cello 6;
+#X obj 186 166 clone -s 1 cello 6;
 #X connect 0 0 13 0;
 #X connect 1 0 2 0;
 #X connect 2 0 9 0;
@@ -32,4 +32,4 @@
 #X connect 10 2 11 0;
 #X connect 13 0 5 0;
 #X connect 13 0 7 0;
-#X coords 0 -1 1 1 200 140 2 -57 248;
+#X coords 0 427 1 426 200 140 0;

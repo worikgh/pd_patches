@@ -1,0 +1,40 @@
+#N canvas 2 94 450 300 12;
+#X obj 247 176 MULTI_SAMPLER 4;
+#X obj 365 176 cnv 15 50 25 empty empty DRUMS 5 12 0 12 -261682 -66577
+0;
+#N canvas 711 94 450 300 MULTI_SAMPLER_PARAMS 0;
+#X obj 179 41 loadbang;
+#X floatatom 166 188 5 0 0 0 - - -;
+#X msg 166 208 load \$1;
+#X text 227 202 use number box \; to load samples \; per voices (0-3)
+\;;
+#X obj 115 246 outlet;
+#X msg 131 101 read 0 ./audio/kick.wav;
+#X msg 141 121 read 1 ./audio/snare.wav;
+#X msg 151 141 read 2 ./audio/hh.wav;
+#X msg 161 161 read 3 ./audio/tom.wav;
+#X connect 0 0 5 0;
+#X connect 0 0 6 0;
+#X connect 0 0 7 0;
+#X connect 0 0 8 0;
+#X connect 1 0 2 0;
+#X connect 2 0 4 0;
+#X connect 5 0 4 0;
+#X connect 6 0 4 0;
+#X connect 7 0 4 0;
+#X connect 8 0 4 0;
+#X restore 215 144 pd MULTI_SAMPLER_PARAMS;
+#X obj 111 157 f 3;
+#X obj 302 90 f 44;
+#X obj 247 201 outlet~;
+#X obj 109 55 vradio 15 1 0 5 empty empty Select -9 -8 0 10 -262144
+-1 -1 0;
+#X obj 162 5 inlet triger;
+#X connect 0 0 5 0;
+#X connect 2 0 0 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 1;
+#X connect 6 0 3 1;
+#X connect 7 0 3 0;
+#X connect 7 0 4 0;
+#X coords 0 -1 1 1 38 92 2 98 40;
