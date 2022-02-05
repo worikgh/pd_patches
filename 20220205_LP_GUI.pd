@@ -1,0 +1,69 @@
+#N canvas 175 106 1004 561 12;
+#X declare -path r_cycle;
+#X declare -path ../;
+#X obj 29 19 declare -path r_cycle;
+#X obj 28 92 LP_GUI -1;
+#X floatatom 577 92 5 0 0 1 status - -;
+#X obj 29 45 DEVICE_SELECT;
+#X text 271 69 LP_GUI;
+#X obj 424 68 BUTTON 32 24 but_1 -1;
+#X symbolatom 424 93 10 0 0 0 - - -;
+#X floatatom 525 358 5 0 0 1 status - -;
+#X symbolatom 372 359 10 0 0 0 - - -;
+#X obj 372 334 BUTTON 69 45 but_2 -1;
+#X obj 372 382 print BUTTON;
+#X obj 424 116 print BUTTON;
+#N canvas 1 78 486 150 MISC 0;
+#X text 32 25 This is needed to make the r_cycle objects accessible
+even before placing the r_cycle folder in a place part of the path
+search in Pd \;;
+#X obj 34 87 declare -path ../;
+#X restore 28 496 pd MISC;
+#X text 25 550 Copyright 2019-2020 Focusrite Audio Engineering Limited.
+;
+#X text 56 672 http://www.apache.org/licenses/LICENSE-2.0;
+#X text 26 580 Licensed under the Apache License \, Version 2 (the
+"License") \; you may not use this file except in compliance with the
+License.;
+#X text 26 637 You may obtain a copy of the License at;
+#X text 26 702 Unless required by applicable law or agreed to in writing
+\, software distributed under the License is distributed on an "AS
+IS" BASIS \, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND \, either
+express or implied.;
+#X text 26 758 See the License for the specific language governing
+permissions and limitations under the License.;
+#X msg 170 68 device LP_X;
+#X obj 172 39 loadbang;
+#X msg 531 18 color_bg 8;
+#X msg 419 26 color_fg 24;
+#X obj 719 445 TO_LP_X;
+#X obj 722 419 r \$0-LPX;
+#X obj 577 116 route 1;
+#X obj 577 148 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 623 149 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 577 230 s \$0-LPX;
+#X obj 715 209 s \$0-LPX;
+#X msg 577 205 rgb 32 127 40 15;
+#X msg 671 50 rgb 15 127 40 15 55 23 127 100 99 0 127 9;
+#X msg 623 170 rgb 32 23 127 100;
+#X connect 2 0 25 0;
+#X connect 5 0 6 0;
+#X connect 5 1 2 0;
+#X connect 6 0 11 0;
+#X connect 8 0 10 0;
+#X connect 9 0 8 0;
+#X connect 9 1 7 0;
+#X connect 19 0 1 0;
+#X connect 20 0 19 0;
+#X connect 21 0 5 0;
+#X connect 22 0 5 0;
+#X connect 24 0 23 0;
+#X connect 25 0 26 0;
+#X connect 25 1 27 0;
+#X connect 26 0 30 0;
+#X connect 27 0 32 0;
+#X connect 30 0 28 0;
+#X connect 31 0 29 0;
+#X connect 32 0 29 0;
