@@ -9,7 +9,7 @@
 #X floatatom 39 228 5 0 0 0 - - -;
 #X msg 82 148 1;
 #X obj 39 252 hradio 16 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
--1 2;
+-1 0;
 #X obj 39 203 mod 8;
 #X obj 40 110 metro 500;
 #X floatatom 39 269 5 0 0 0 - - -;
@@ -127,7 +127,7 @@
 #X obj 533 401 /;
 #X obj 533 341 r sample_2_size;
 #X obj 265 546 hsl 196 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 19500 1;
 #X obj 72 10 bng 15 250 50 0 empty empty Start 17 7 0 10 -262144 -1
 -1;
 #X obj 468 79 r sample_2_size;
@@ -195,7 +195,7 @@
 #X obj 533 401 /;
 #X obj 468 254 r sample_3_size;
 #X obj 147 438 hsl 196 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 19500 1;
 #X obj 72 10 bng 15 250 50 0 empty empty Start 17 7 0 10 -262144 -1
 -1;
 #X obj 196 9 r sample_3_size;
@@ -262,7 +262,7 @@
 #X obj 533 401 /;
 #X obj 468 254 r sample_4_size;
 #X obj 147 438 hsl 196 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 19500 1;
 #X obj 72 10 bng 15 250 50 0 empty empty Start 17 7 0 10 -262144 -1
 -1;
 #X obj 196 9 r sample_4_size;
@@ -353,7 +353,7 @@
 #X obj 533 401 /;
 #X obj 468 254 r sample_5_size;
 #X obj 147 438 hsl 196 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 19500 1;
 #X obj 72 10 bng 15 250 50 0 empty empty Start 17 7 0 10 -262144 -1
 -1;
 #X obj 196 9 r sample_5_size;
@@ -429,7 +429,7 @@ f 40;
 #X obj 533 401 /;
 #X obj 468 254 r sample_6_size;
 #X obj 147 438 hsl 196 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 19500 1;
 #X obj 72 10 bng 15 250 50 0 empty empty Start 17 7 0 10 -262144 -1
 -1;
 #X obj 196 9 r sample_6_size;
@@ -489,7 +489,7 @@ f 40;
 #X obj 314 229 snapshot~;
 #X obj 533 401 /;
 #X obj 147 438 hsl 196 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 19500 1;
 #X obj 72 10 bng 15 250 50 0 empty empty Start 17 7 0 10 -262144 -1
 -1;
 #X floatatom 196 59 15 0 0 0 - - -;
@@ -558,7 +558,7 @@ f 40;
 #X obj 314 229 snapshot~;
 #X obj 533 401 /;
 #X obj 147 438 hsl 196 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 5164 1;
 #X obj 72 10 bng 15 250 50 0 empty empty Start 17 7 0 10 -262144 -1
 -1;
 #X floatatom 196 59 15 0 0 0 - - -;
@@ -628,7 +628,7 @@ f 40;
 #X obj 379 316 snapshot~;
 #X obj 533 401 /;
 #X obj 265 546 hsl 196 15 0 1 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 19500 1;
+-1 -1 1026 1;
 #X obj 72 10 bng 15 250 50 0 empty empty Start 17 7 0 10 -262144 -1
 -1;
 #X floatatom 468 129 15 0 0 0 - - -;
@@ -775,7 +775,7 @@ sample_6 sample_7 sample_8, f 66;
 #X msg 1665 209 0;
 #X obj 1275 6 t b b b b b b b b b b;
 #X text 1434 49 Code to save and restore the samples;
-#X text 1176 701 Reset samples on load;
+#X text 1212 678 Reset samples on load;
 #X msg 1280 732 set;
 #X obj 1181 781 s \$0-ss1;
 #X obj 1248 781 s \$0-ss2;
@@ -785,6 +785,7 @@ sample_6 sample_7 sample_8, f 66;
 #X obj 1248 819 s \$0-ss6;
 #X obj 1314 819 s \$0-ss7;
 #X obj 1379 819 s \$0-ss8;
+#X obj 1280 702 loadbang;
 #X connect 0 0 2 0;
 #X connect 1 0 9 0;
 #X connect 2 0 3 0;
@@ -994,3 +995,4 @@ sample_6 sample_7 sample_8, f 66;
 #X connect 192 0 195 0;
 #X connect 192 0 200 0;
 #X connect 192 0 196 0;
+#X connect 201 0 192 0;
