@@ -15,7 +15,7 @@
 #X obj 13 15 inlet~ Signal;
 #X obj 243 36 metro 200;
 #X obj 243 61 snapshot~;
-#X floatatom 232 116 5 0 0 0 - - -;
+#X floatatom 220 111 5 0 0 0 - - -;
 #X obj 204 246 +~;
 #X obj 204 271 /~ 2;
 #X connect 0 0 4 0;

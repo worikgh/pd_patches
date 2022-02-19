@@ -13,8 +13,8 @@
 #X obj 74 244 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X text 94 239 <- Bangs on pad release;
-#X obj 307 92 tgl 15 0 \$0-Pad-\$1 empty \$1 17 7 1 10 -1 -258113 -1
-0 1;
+#X obj 307 92 tgl 15 0 empty empty \$1 17 7 1 10 -1 -258113 -1 0 1
+;
 #X obj 333 46 expr if($i2 == 1 \, 0 \, 1);
 #X obj 98 201 spigot;
 #X obj 18 164 t a a;
