@@ -1,0 +1,20 @@
+#N canvas 233 305 450 300 12;
+#X obj 7 201 dac~;
+#X obj 20 173 *~ 1;
+#X obj 23 84 WTSMellowtronNote~ 17 60 Songs/Unfuck/samples/Guitar_C5.wav
+;
+#X obj 32 109 WTSMellowtronNote~ 17 64 Songs/Unfuck/samples/Guitar_E5.wav
+;
+#X obj 17 62 WTSMellowtronNote~ 17 57 Songs/Unfuck/samples/Guitar_A4.wav
+;
+#X obj 8 37 WTSMellowtronNote~ 17 55 Songs/Unfuck/samples/Guitar_G4.wav
+;
+#X obj 40 133 WTSMellowtronNote~ 17 67 Songs/Unfuck/samples/Guitar_G5.wav
+;
+#X connect 1 0 0 0;
+#X connect 1 0 0 1;
+#X connect 2 0 1 0;
+#X connect 3 0 1 0;
+#X connect 4 0 1 0;
+#X connect 5 0 1 0;
+#X connect 6 0 1 0;

@@ -1,0 +1,19 @@
+#N canvas 186 181 752 180 12;
+#X obj 53 -358 notein \$1;
+#X obj 68 -277 sample~ \$0-buffer \$3;
+#X msg 22 -285 bang;
+#X obj 22 -248 tabplay~ \$0-buffer;
+#X obj 22 -222 outlet~;
+#X obj 44 -310 spigot;
+#X obj 19 -333 route \$2;
+#X obj 160 -217 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X connect 0 0 6 0;
+#X connect 0 1 5 1;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 1 7 0;
+#X connect 3 1 5 0;
+#X connect 5 0 2 0;
+#X connect 6 0 5 0;
+#X coords 0 180 1 179 85 60 0;
