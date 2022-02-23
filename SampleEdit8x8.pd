@@ -1,4 +1,4 @@
-#N canvas 18 64 1142 566 12;
+#N canvas 7 126 1243 514 12;
 #X obj 39 134 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 39 89 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0 1
@@ -9,7 +9,7 @@
 #X floatatom 39 228 5 0 0 0 - - -;
 #X msg 82 148 1;
 #X obj 39 252 hradio 16 1 0 8 empty empty empty 0 -8 0 10 -262144 -1
--1 5;
+-1 3;
 #X obj 39 203 mod 8;
 #X obj 40 110 metro 500;
 #X floatatom 39 269 5 0 0 0 - - -;
@@ -95,7 +95,7 @@
 #X connect 30 0 4 0;
 #X connect 31 0 4 0;
 #X restore 52 424 pd guide_lights;
-#X obj 22 2 loadbang;
+#X obj 100 -32 loadbang;
 #X obj 210 95 select 0 1 2 3 4 5 6 7, f 23;
 #X obj 285 457 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
@@ -116,8 +116,8 @@
 #N canvas 0 62 1280 658 sampler_2 0;
 #X obj 503 238 r \$0-sampler_2_fn;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array sound_2_data 84237 float 2;
-#X coords 0 1 84237 -1 200 140 1 0 0;
+#X array sound_2_data 36932 float 2;
+#X coords 0 1 36932 -1 200 140 1 0 0;
 #X restore 262 399 graph;
 #X msg 503 265 read -resize \$1 sound_2_data;
 #X obj 503 290 soundfiler;
@@ -180,8 +180,8 @@
 #X obj 324 732 throw~ dac;
 #N canvas 36 153 657 494 sampler_3 0;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array sound_3_data 18300 float 2;
-#X coords 0 1 18300 -1 200 140 1 0 0;
+#X array sound_3_data 58015 float 2;
+#X coords 0 1 58015 -1 200 140 1 0 0;
 #X restore 144 298 graph;
 #X msg 438 178 read -resize \$1 sound_3_data;
 #X obj 438 203 soundfiler;
@@ -243,8 +243,8 @@
 #X obj 210 67 r sequence;
 #N canvas 95 351 450 300 sampler_4 0;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array sound_4_data 13224 float 2;
-#X coords 0 1 13224 -1 200 140 1 0 0;
+#X array sound_4_data 9616 float 2;
+#X coords 0 1 9616 -1 200 140 1 0 0;
 #X restore 144 298 graph;
 #X msg 438 178 read -resize \$1 sound_4_data;
 #X obj 438 203 soundfiler;
@@ -372,8 +372,8 @@
 #X obj 381 595 throw~ dac;
 #N canvas 390 213 450 300 sampler_6 0;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array sound_6_data 71603 float 2;
-#X coords 0 1 71603 -1 200 140 1 0 0;
+#X array sound_6_data 8232 float 2;
+#X coords 0 1 8232 -1 200 140 1 0 0;
 #X restore 144 298 graph;
 #X msg 438 178 read -resize \$1 sound_6_data;
 #X obj 438 203 soundfiler;
@@ -436,8 +436,8 @@
 #X obj 401 552 throw~ dac;
 #N canvas 215 85 858 601 sampler_7 0;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array sound_7_data 48007 float 2;
-#X coords 0 1 48007 -1 200 140 1 0 0;
+#X array sound_7_data 18300 float 2;
+#X coords 0 1 18300 -1 200 140 1 0 0;
 #X restore 144 298 graph;
 #X obj 438 203 soundfiler;
 #X floatatom 5 158 15 0 0 0 - - -;
@@ -498,8 +498,8 @@
 #X obj 423 504 throw~ dac;
 #N canvas 18 99 891 621 sampler_8 0;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array sound_8_data 45550 float 2;
-#X coords 0 1 45550 -1 200 140 1 0 0;
+#X array sound_8_data 12162 float 2;
+#X coords 0 1 12162 -1 200 140 1 0 0;
 #X restore 144 298 graph;
 #X obj 438 203 soundfiler;
 #X floatatom 5 158 15 0 0 0 - - -;
@@ -529,8 +529,9 @@
 #X obj 6 218 tabread4~ sound_8_data;
 #X obj 197 155 r sample_8_size;
 #X obj 438 151 r \$0-sampler_8_fn;
-#X msg 438 178 read -resize \$1 sound_8_data;
+#X msg 438 175 read -resize \$1 sound_8_data;
 #X obj 466 261 r sample_8_size;
+#X obj 606 264 print SAMPLE8;
 #X connect 2 0 22 0;
 #X connect 3 0 6 0;
 #X connect 3 0 23 0;
@@ -554,6 +555,7 @@
 #X connect 23 0 19 0;
 #X connect 24 0 3 1;
 #X connect 25 0 26 0;
+#X connect 25 0 28 0;
 #X connect 26 0 1 0;
 #X connect 27 0 7 1;
 #X restore 422 481 pd sampler_8;
@@ -561,8 +563,8 @@
 #X obj 285 828 throw~ dac;
 #N canvas 0 62 1280 658 sampler_1 0;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array sound_1_data 12162 float 2;
-#X coords 0 1 12162 -1 200 140 1 0 0;
+#X array sound_1_data 28303 float 2;
+#X coords 0 1 28303 -1 200 140 1 0 0;
 #X restore 262 399 graph;
 #X obj 503 290 soundfiler;
 #X floatatom 104 98 15 0 0 0 - - -;
@@ -631,7 +633,7 @@
 #X obj 667 603 s \$0-ss7;
 #X obj 732 603 s \$0-ss8;
 #X obj 633 486 loadbang;
-#N canvas 107 135 1273 537 samples 0;
+#N canvas 2 88 1273 537 samples 1;
 #X obj 10 -87 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 39 -103 openpanel;
@@ -641,17 +643,19 @@
 #X obj 44 -35 openpanel;
 #X obj 43 -11 s \$0-sampler_3_fn;
 #X msg 117 -34 set \$1;
-#X msg 181 -35 /home/patch/Documents/Pd/samples/Unfuck/Cough.wav,
-f 40;
-#X msg 116 -104 set \$1;
-#X msg 180 -105 /home/patch/Documents/Pd/samples/Unfuck/IfIWasARichMan.wav
+#X msg 181 -35 /home/patch/Documents/Pd/samples/Unfuck/Bass_03.wav
 , f 40;
+#X msg 116 -104 set \$1;
+#X msg 180 -105 /home/patch/Documents/Pd/samples/Unfuck/Bass_02.wav
+, f 40;
+#X obj 52 441 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
 #X obj 14 50 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 43 34 openpanel;
 #X msg 116 35 set \$1;
-#X msg 180 34 /home/patch/Documents/Pd/samples/Unfuck/Cymbol_1.wav
-, f 40;
+#X msg 180 34 /home/patch/Documents/Pd/samples/Unfuck/Drum_02.wav,
+f 40;
 #X obj 42 58 s \$0-sampler_4_fn;
 #X obj 15 117 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
@@ -664,33 +668,34 @@ f 40;
 -1;
 #X obj 44 169 openpanel;
 #X msg 117 170 set \$1;
-#X msg 181 169 /home/patch/Documents/Pd/samples/Unfuck/Looser.wav,
-f 40;
+#X msg 181 169 /home/patch/Documents/Pd/samples/Unfuck/Drum_03.wav
+, f 40;
 #X obj 43 193 s \$0-sampler_6_fn;
 #X obj 14 250 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 43 234 openpanel;
 #X msg 116 235 set \$1;
-#X msg 180 234 /home/patch/Documents/Pd/samples/Unfuck/PieceOfShit.wav
-, f 40;
+#X msg 180 234 /home/patch/Documents/Pd/samples/Unfuck/Cough.wav,
+f 40;
 #X obj 42 258 s \$0-sampler_7_fn;
 #X obj 13 320 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
 -1;
 #X obj 42 304 openpanel;
 #X msg 115 305 set \$1;
-#X msg 179 304 /home/patch/Documents/Pd/samples/Unfuck/WhatALooser.wav
-, f 40;
+#X msg 179 304 /home/patch/Documents/Pd/samples/Unfuck/Gasp.wav, f
+40;
 #X obj 41 328 s \$0-sampler_8_fn;
 #X obj 11 -153 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
 #X obj 40 -169 openpanel;
 #X msg 117 -170 set \$1;
-#X msg 181 -171 /home/patch/Documents/Pd/samples/Unfuck/Gasp.wav,
-f 40;
+#X msg 181 -171 /home/patch/Documents/Pd/samples/Unfuck/Bass_01.wav
+, f 40;
 #X obj 39 -145 s \$0-sampler_1_fn;
 #X obj 578 -145 bng 15 250 50 0 empty empty Save_Samples 17 7 0 10
 -262144 -1 -1;
-#X obj 630 -48 r \$0-save-sample;
+#X obj 578 -125 t b b;
+#X obj 894 40 r \$0-save-sample;
 #X obj 351 -133 s \$0-save-sample;
 #X obj 181 -134 pack s;
 #X msg 237 -132 add sample_1 \$1;
@@ -768,13 +773,11 @@ sample_7 sample_8, f 66;
 #X obj 1025 308 t b a;
 #X obj 1083 407 t b a;
 #X obj 1141 308 t b a;
-#X obj 575 -175 inlet save;
-#X obj 578 -125 t b;
-#X obj 629 4 s \$0-textfile, f 20;
-#X obj 778 188 r \$0-textfile-left;
-#X obj 827 98 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
-#X obj 824 6 print SAVESAMPLE;
+#X obj 894 77 s \$0-textfile;
+#X obj 681 -207 inlet save;
+#X obj 817 134 r \$0-textfile-left;
+#X obj 926 185 print SAMPLES tfL;
+#X obj 807 159 t a a;
 #X connect 0 0 1 0;
 #X connect 1 0 2 0;
 #X connect 1 0 8 0;
@@ -782,139 +785,139 @@ sample_7 sample_8, f 66;
 #X connect 4 0 5 0;
 #X connect 4 0 6 0;
 #X connect 6 0 7 0;
-#X connect 7 0 61 0;
+#X connect 7 0 63 0;
 #X connect 8 0 9 0;
-#X connect 9 0 56 0;
-#X connect 10 0 11 0;
+#X connect 9 0 58 0;
 #X connect 11 0 12 0;
-#X connect 11 0 14 0;
 #X connect 12 0 13 0;
-#X connect 13 0 65 0;
-#X connect 15 0 16 0;
+#X connect 12 0 15 0;
+#X connect 13 0 14 0;
+#X connect 14 0 67 0;
 #X connect 16 0 17 0;
-#X connect 16 0 19 0;
 #X connect 17 0 18 0;
-#X connect 18 0 68 0;
-#X connect 20 0 21 0;
+#X connect 17 0 20 0;
+#X connect 18 0 19 0;
+#X connect 19 0 70 0;
 #X connect 21 0 22 0;
-#X connect 21 0 24 0;
 #X connect 22 0 23 0;
-#X connect 23 0 73 0;
-#X connect 25 0 26 0;
+#X connect 22 0 25 0;
+#X connect 23 0 24 0;
+#X connect 24 0 75 0;
 #X connect 26 0 27 0;
-#X connect 26 0 29 0;
 #X connect 27 0 28 0;
-#X connect 28 0 76 0;
-#X connect 30 0 31 0;
+#X connect 27 0 30 0;
+#X connect 28 0 29 0;
+#X connect 29 0 78 0;
 #X connect 31 0 32 0;
-#X connect 31 0 34 0;
 #X connect 32 0 33 0;
-#X connect 33 0 80 0;
-#X connect 35 0 36 0;
+#X connect 32 0 35 0;
+#X connect 33 0 34 0;
+#X connect 34 0 82 0;
 #X connect 36 0 37 0;
-#X connect 36 0 39 0;
 #X connect 37 0 38 0;
-#X connect 38 0 43 0;
-#X connect 40 0 119 0;
-#X connect 41 0 120 0;
-#X connect 41 0 123 0;
-#X connect 43 0 44 0;
-#X connect 43 0 39 0;
-#X connect 44 0 42 0;
-#X connect 45 0 38 0;
-#X connect 46 2 47 0;
-#X connect 46 3 48 0;
-#X connect 46 4 49 0;
-#X connect 46 5 50 0;
-#X connect 46 6 51 0;
-#X connect 46 7 52 0;
-#X connect 46 8 53 0;
-#X connect 46 9 54 0;
-#X connect 46 9 122 0;
-#X connect 56 0 57 0;
-#X connect 56 0 2 0;
-#X connect 57 0 55 0;
-#X connect 58 0 7 0;
-#X connect 59 0 9 0;
-#X connect 61 0 62 0;
-#X connect 61 0 5 0;
-#X connect 62 0 60 0;
-#X connect 63 0 13 0;
-#X connect 65 0 66 0;
+#X connect 37 0 40 0;
+#X connect 38 0 39 0;
+#X connect 39 0 45 0;
+#X connect 41 0 42 0;
+#X connect 42 0 48 0;
+#X connect 43 0 120 0;
+#X connect 45 0 46 0;
+#X connect 45 0 40 0;
+#X connect 46 0 44 0;
+#X connect 47 0 39 0;
+#X connect 48 2 49 0;
+#X connect 48 3 50 0;
+#X connect 48 4 51 0;
+#X connect 48 5 52 0;
+#X connect 48 6 53 0;
+#X connect 48 7 54 0;
+#X connect 48 8 55 0;
+#X connect 48 9 56 0;
+#X connect 58 0 59 0;
+#X connect 58 0 2 0;
+#X connect 59 0 57 0;
+#X connect 60 0 7 0;
+#X connect 61 0 9 0;
+#X connect 63 0 64 0;
+#X connect 63 0 5 0;
+#X connect 64 0 62 0;
 #X connect 65 0 14 0;
-#X connect 66 0 64 0;
-#X connect 68 0 69 0;
-#X connect 68 0 19 0;
-#X connect 69 0 67 0;
-#X connect 70 0 18 0;
-#X connect 71 0 23 0;
-#X connect 73 0 74 0;
+#X connect 67 0 68 0;
+#X connect 67 0 15 0;
+#X connect 68 0 66 0;
+#X connect 70 0 71 0;
+#X connect 70 0 20 0;
+#X connect 71 0 69 0;
+#X connect 72 0 19 0;
 #X connect 73 0 24 0;
-#X connect 74 0 72 0;
-#X connect 76 0 78 0;
-#X connect 76 0 29 0;
-#X connect 77 0 28 0;
-#X connect 78 0 75 0;
-#X connect 80 0 82 0;
-#X connect 80 0 34 0;
-#X connect 81 0 33 0;
-#X connect 82 0 79 0;
-#X connect 83 0 89 0;
-#X connect 83 1 88 0;
-#X connect 83 2 91 0;
-#X connect 83 3 94 0;
-#X connect 83 4 97 0;
-#X connect 83 5 100 0;
-#X connect 83 6 102 0;
-#X connect 83 7 106 0;
-#X connect 83 8 108 0;
-#X connect 85 0 110 0;
-#X connect 86 0 112 0;
-#X connect 88 0 86 0;
-#X connect 89 0 85 0;
-#X connect 90 0 111 0;
-#X connect 91 0 90 0;
-#X connect 93 0 113 0;
-#X connect 94 0 93 0;
-#X connect 96 0 114 0;
-#X connect 97 0 96 0;
-#X connect 99 0 115 0;
-#X connect 100 0 99 0;
-#X connect 101 0 116 0;
+#X connect 75 0 76 0;
+#X connect 75 0 25 0;
+#X connect 76 0 74 0;
+#X connect 78 0 80 0;
+#X connect 78 0 30 0;
+#X connect 79 0 29 0;
+#X connect 80 0 77 0;
+#X connect 82 0 84 0;
+#X connect 82 0 35 0;
+#X connect 83 0 34 0;
+#X connect 84 0 81 0;
+#X connect 85 0 91 0;
+#X connect 85 1 90 0;
+#X connect 85 2 93 0;
+#X connect 85 3 96 0;
+#X connect 85 4 99 0;
+#X connect 85 5 102 0;
+#X connect 85 6 104 0;
+#X connect 85 7 108 0;
+#X connect 85 8 110 0;
+#X connect 87 0 112 0;
+#X connect 88 0 114 0;
+#X connect 90 0 88 0;
+#X connect 91 0 87 0;
+#X connect 92 0 113 0;
+#X connect 93 0 92 0;
+#X connect 95 0 115 0;
+#X connect 96 0 95 0;
+#X connect 98 0 116 0;
+#X connect 99 0 98 0;
+#X connect 101 0 117 0;
 #X connect 102 0 101 0;
-#X connect 105 0 117 0;
-#X connect 106 0 105 0;
-#X connect 110 0 84 0;
-#X connect 110 1 84 0;
-#X connect 111 0 92 0;
-#X connect 111 1 92 0;
-#X connect 112 0 87 0;
-#X connect 112 1 87 0;
-#X connect 113 0 95 0;
-#X connect 113 1 95 0;
-#X connect 114 0 98 0;
-#X connect 114 1 98 0;
-#X connect 115 0 103 0;
-#X connect 115 1 103 0;
-#X connect 116 0 104 0;
-#X connect 116 1 104 0;
-#X connect 117 0 107 0;
-#X connect 117 1 107 0;
-#X connect 118 0 40 0;
-#X connect 119 0 46 0;
-#X connect 121 0 83 0;
-#X restore 624 65 pd samples;
-#X obj 607 293 midiout;
-#X obj 607 244 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X connect 103 0 118 0;
+#X connect 104 0 103 0;
+#X connect 107 0 119 0;
+#X connect 108 0 107 0;
+#X connect 112 0 86 0;
+#X connect 112 1 86 0;
+#X connect 113 0 94 0;
+#X connect 113 1 94 0;
+#X connect 114 0 89 0;
+#X connect 114 1 89 0;
+#X connect 115 0 97 0;
+#X connect 115 1 97 0;
+#X connect 116 0 100 0;
+#X connect 116 1 100 0;
+#X connect 117 0 105 0;
+#X connect 117 1 105 0;
+#X connect 118 0 106 0;
+#X connect 118 1 106 0;
+#X connect 119 0 109 0;
+#X connect 119 1 109 0;
+#X connect 121 0 41 0;
+#X connect 122 0 124 0;
+#X connect 124 0 85 0;
+#X connect 124 1 123 0;
+#X restore 617 16 pd samples;
+#X obj 1094 295 midiout;
+#X obj 1094 246 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
 -1 -1;
-#X obj 608 267 list 240 0 32 41 2 12 0 127 247;
-#X text 625 242 Set programmer mode;
-#X obj 584 12 bng 15 250 50 0 empty empty Save 17 7 0 10 -262144 -1
+#X obj 1095 269 list 240 0 32 41 2 12 0 127 247;
+#X text 1112 244 Set programmer mode;
+#X obj 577 -37 bng 15 250 50 0 empty empty Save 17 7 0 10 -262144 -1
 -1;
-#N canvas 74 153 894 540 control_pad 0;
+#N canvas 20 108 1212 540 control_pad 0;
 #X obj 14 64 WTSButton8 81 82 83 84 85 86 87 88;
 #X obj 26 327 tgl 15 0 \$0-c1r1 empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X obj 61 327 tgl 15 0 \$0-c2r1 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 94 327 tgl 15 0 \$0-c3r1 empty empty 17 7 0 10 -262144 -1 -1
@@ -932,7 +935,7 @@ sample_7 sample_8, f 66;
 #X obj 26 355 tgl 15 0 \$0-c1r2 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 61 355 tgl 15 0 \$0-c2r2 empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X obj 94 355 tgl 15 0 \$0-c3r2 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 127 356 tgl 15 0 \$0-c4r2 empty empty 17 7 0 10 -262144 -1 -1
@@ -951,7 +954,7 @@ sample_7 sample_8, f 66;
 #X obj 61 383 tgl 15 0 \$0-c2r3 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 94 383 tgl 15 0 \$0-c3r3 empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X obj 127 385 tgl 15 0 \$0-c4r3 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 154 384 tgl 15 0 \$0-c5r3 empty empty 17 7 0 10 -262144 -1 -1
@@ -969,7 +972,7 @@ sample_7 sample_8, f 66;
 #X obj 94 411 tgl 15 0 \$0-c3r4 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 127 414 tgl 15 0 \$0-c4r4 empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X obj 154 412 tgl 15 0 \$0-c5r4 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 184 413 tgl 15 0 \$0-c6r4 empty empty 17 7 0 10 -262144 -1 -1
@@ -989,7 +992,7 @@ sample_7 sample_8, f 66;
 #X obj 127 443 tgl 15 0 \$0-c4r5 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 154 440 tgl 15 0 \$0-c5r5 empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X obj 184 441 tgl 15 0 \$0-c6r5 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 215 441 tgl 15 0 \$0-c7r5 empty empty 17 7 0 10 -262144 -1 -1
@@ -1007,7 +1010,7 @@ sample_7 sample_8, f 66;
 #X obj 154 468 tgl 15 0 \$0-c5r6 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 184 469 tgl 15 0 \$0-c6r6 empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X obj 215 469 tgl 15 0 \$0-c7r6 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 254 466 tgl 15 0 \$0-c8r6 empty empty 17 7 0 10 -262144 -1 -1
@@ -1025,13 +1028,13 @@ sample_7 sample_8, f 66;
 #X obj 184 497 tgl 15 0 \$0-c6r7 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 215 497 tgl 15 0 \$0-c7r7 empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X obj 254 494 tgl 15 0 \$0-c8r7 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 26 523 tgl 15 0 \$0-c1r8 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 61 523 tgl 15 0 \$0-c2r8 empty empty 17 7 0 10 -262144 -1 -1
-0 1;
+1 1;
 #X obj 94 523 tgl 15 0 \$0-c3r8 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 128 523 tgl 15 0 \$0-c4r8 empty empty 17 7 0 10 -262144 -1 -1
@@ -1043,7 +1046,7 @@ sample_7 sample_8, f 66;
 #X obj 217 523 tgl 15 0 \$0-c7r8 empty empty 17 7 0 10 -262144 -1 -1
 0 1;
 #X obj 255 523 tgl 15 0 \$0-c8r8 empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X obj 14 192 WTSButton8 41 42 43 44 45 46 47 48;
 #X obj 14 256 WTSButton8 21 22 23 24 25 26 27 28;
 #X obj 14 288 WTSButton8 11 12 13 14 15 16 17 18;
@@ -1745,7 +1748,7 @@ sample_7 sample_8, f 66;
 -1 0 1;
 #X obj 163 41 tgl 15 0 empty \$0-v-c8r8 empty 17 7 0 10 -262144 -1
 -1 0 1;
-#X obj 25 568 route lpx_row1 lpx_row2 lpx_row3 lpx_row4 lpx_row5 lpx_row6
+#X obj 26 565 route lpx_row1 lpx_row2 lpx_row3 lpx_row4 lpx_row5 lpx_row6
 lpx_row7 lpx_row8, f 44;
 #X obj 25 1039 unpack f f f f f f f f, f 90;
 #X obj 13 1070 s \$0-v-c1r1;
@@ -1823,6 +1826,7 @@ lpx_row7 lpx_row8, f 44;
 #X text 285 489 Save state of pad;
 #X obj 341 6 inlet save;
 #X obj 25 543 r \$0-textfile-left;
+#X obj 187 542 print PAD;
 #X connect 0 0 1 0;
 #X connect 0 1 2 0;
 #X connect 0 2 3 0;
@@ -2130,20 +2134,57 @@ lpx_row7 lpx_row8, f 44;
 #X connect 293 7 298 0;
 #X connect 319 0 179 0;
 #X connect 320 0 244 0;
+#X connect 320 0 321 0;
 #X coords 0 -1 1 1 320 260 2 10 60;
 #X restore 213 145 pd control_pad;
-#X obj 554 112 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+#X obj 547 63 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X obj 583 91 r \$0-textfile;
+#X obj 583 240 textfile;
+#X obj 583 308 s \$0-textfile-left;
+#X obj 577 -17 t b b b b;
+#X msg 727 24 clear;
+#X obj 727 49 s \$0-textfile;
+#X obj 575 69 s \$0-textfile;
+#X obj 856 -79 bng 15 250 50 0 empty empty Restore 17 7 0 10 -262144
 -1 -1;
-#X obj 717 140 r \$0-textfile;
-#X obj 717 165 textfile;
-#X obj 717 190 s \$0-textfile-left;
-#X msg 953 68 read save/\$0.txt;
-#X obj 584 32 t b b b b;
-#X msg 734 73 clear;
-#X msg 582 93 write save/\$0.txt;
-#X obj 914 189 print ATTEXTFILE;
-#X obj 734 98 s \$0-textfile;
-#X obj 582 118 s \$0-sampler_1_fn;
+#X msg 848 91 bang;
+#X obj 1033 161 s \$0-textfile;
+#X msg 1098 98 rewind;
+#X obj 638 283 s \$0-textfile-right;
+#X obj 682 -74 r \$0-textfile-right;
+#X msg 1105 -32 clear;
+#X obj 848 69 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
+-1;
+#X msg 825 20 stop;
+#X obj 682 -51 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 636 265 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 600 210 print;
+#X obj 583 129 spigot;
+#X obj 690 117 i 1;
+#X obj 764 115 i 0;
+#X obj 764 90 r \$0-tf0;
+#X obj 856 -56 t b b b b b b b;
+#X obj 690 92 r \$0-tf1;
+#X obj 1010 -62 s \$0-tf0;
+#X text 1008 -81 Stop text file getting commands;
+#X obj 682 -32 t a a a;
+#X obj 609 -74 loadbang;
+#X obj 601 186 print @tf;
+#X obj 573 154 t a a;
+#X floatatom 764 140 5 0 0 0 - - -;
+#X obj 984 -57 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 1115 74 read save/\$1.txt;
+#X msg 575 44 write save/\$1.txt;
+#X obj 848 45 metro 200;
+#X obj 40 -100 inlet start-stop;
+#X obj 1115 -6 symbol \$1;
+#X obj 553 11 symbol \$1;
+#X obj 856 -106 loadbang;
+#X obj 140 129 print SEQ;
 #X connect 0 0 2 0;
 #X connect 1 0 9 0;
 #X connect 2 0 3 0;
@@ -2160,7 +2201,6 @@ lpx_row7 lpx_row8, f 44;
 #X connect 11 0 13 0;
 #X connect 12 0 9 1;
 #X connect 13 0 12 0;
-#X connect 15 0 1 0;
 #X connect 15 0 48 0;
 #X connect 16 0 68 1;
 #X connect 16 1 68 2;
@@ -2183,6 +2223,7 @@ lpx_row7 lpx_row8, f 44;
 #X connect 27 0 36 0;
 #X connect 30 0 29 0;
 #X connect 32 0 16 0;
+#X connect 32 0 110 0;
 #X connect 33 0 34 0;
 #X connect 35 0 28 1;
 #X connect 36 0 28 0;
@@ -2207,7 +2248,7 @@ lpx_row7 lpx_row8, f 44;
 #X connect 61 0 52 0;
 #X connect 64 0 65 0;
 #X connect 65 0 63 0;
-#X connect 67 0 74 0;
+#X connect 67 0 73 0;
 #X connect 68 0 17 0;
 #X connect 68 1 18 0;
 #X connect 68 2 19 0;
@@ -2217,12 +2258,45 @@ lpx_row7 lpx_row8, f 44;
 #X connect 68 6 21 0;
 #X connect 68 7 24 0;
 #X connect 69 0 68 0;
-#X connect 70 0 71 0;
-#X connect 70 0 77 0;
+#X connect 70 0 89 0;
 #X connect 71 0 72 0;
-#X connect 74 0 76 0;
-#X connect 74 1 69 0;
-#X connect 74 2 62 0;
-#X connect 74 3 75 0;
-#X connect 75 0 78 0;
-#X connect 76 0 79 0;
+#X connect 71 1 87 0;
+#X connect 73 0 108 0;
+#X connect 73 1 69 0;
+#X connect 73 2 62 0;
+#X connect 73 3 74 0;
+#X connect 74 0 75 0;
+#X connect 77 0 93 0;
+#X connect 78 0 71 0;
+#X connect 80 0 79 0;
+#X connect 82 0 86 0;
+#X connect 83 0 79 0;
+#X connect 84 0 78 0;
+#X connect 85 0 105 0;
+#X connect 86 0 97 0;
+#X connect 87 0 81 0;
+#X connect 88 0 71 0;
+#X connect 89 0 100 0;
+#X connect 90 0 89 1;
+#X connect 91 0 89 1;
+#X connect 91 0 101 0;
+#X connect 92 0 91 0;
+#X connect 93 1 105 0;
+#X connect 93 3 102 0;
+#X connect 93 4 80 0;
+#X connect 93 5 107 0;
+#X connect 93 6 83 0;
+#X connect 94 0 90 0;
+#X connect 97 1 90 0;
+#X connect 97 2 85 0;
+#X connect 98 0 97 0;
+#X connect 100 0 71 0;
+#X connect 100 1 99 0;
+#X connect 102 0 95 0;
+#X connect 103 0 79 0;
+#X connect 104 0 76 0;
+#X connect 105 0 84 0;
+#X connect 106 0 1 0;
+#X connect 107 0 103 0;
+#X connect 108 0 104 0;
+#X connect 109 0 77 0;
