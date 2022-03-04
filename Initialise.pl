@@ -6,17 +6,17 @@ use strict;
 # Find the midi numbers of the WORLDE, Launchpad X, and Pure Data
 
 my @aconnect_l = `aconnect -l`;
-
+print @aconnect_l;
+print scalar(@aconnect_l)." lines\n";
 my @wdd = grep {defined} map {/^client\s(\d+): 'WORLDE'/; $1} @aconnect_l;
 @wdd == 1 or die "Too many entries for worlde";
 my $worlde_device = $wdd[0];
-
 my @lpd = grep {defined} map {/^client (\d+): 'Launchpad X'/} @aconnect_l;
 @lpd == 1 or die "Too many entries for Launchpd X";
 my $launchpad_x_device = $lpd[0];
 
 my @pdd = grep {defined} map {/^client (\d+): 'Pure Data'/} @aconnect_l;
-@pdd == 1 or die "Too many entries for Pure Data";
+@pdd == 1 or die "Too many entries for Pure Data: " . scalar(@pdd);
 my $pure_data_device = $pdd[0];
 
 print "\$worlde_device $worlde_device. \n\$launchpad_x_device $launchpad_x_device. \n\$pure_data_device $pure_data_device\n";
